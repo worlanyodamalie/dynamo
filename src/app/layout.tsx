@@ -4,7 +4,7 @@ import { Inter , Sora } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 const sora = Sora({
-   weight: ["300" , "400" , "500","600"],
+   weight: ["300" , "400" , "500","600","700"],
    variable: '--font-sora',
    subsets: ['latin'],
    display: 'swap',
