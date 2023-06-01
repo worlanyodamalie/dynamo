@@ -1,17 +1,119 @@
 import Image from 'next/image'
-import { NavBar , Hero , ContentSection} from './components/index'
+import { NavBar , Hero , ContentSection, SwipeSlider,BusinessBenefits} from './components/index'
+
+
+const benefits = [
+  {
+      img: 'direct-reward.svg',
+      title: 'Direct reward',
+      description: 'Most transactions come with a reward or a cash back'
+  },
+  {
+      img: '/youthful-modern.svg',
+      title: 'Youthful and modern',
+      description: 'Digitized transactions and engagements'
+  },
+  {
+      img: 'nexus.svg',
+      title: 'Nexus',
+      description: 'Bringing all your digital transactions in one place'
+  },
+  {
+      img: '/youthful-modern.svg',
+      title: 'Youthful and modern',
+      description: 'Digitized transactions and engagements'
+  },
+  {
+      img: 'nexus.svg',
+      title: 'Nexus',
+      description: 'Bringing all your digital transactions in one place'
+  },
+  {
+      img: '/youthful-modern.svg',
+      title: 'Youthful and modern',
+      description: 'Digitized transactions and engagements'
+  },
+  {
+      img: 'nexus.svg',
+      title: 'Nexus',
+      description: 'Bringing all your digital transactions in one place'
+  },
+
+]
+
+const plannedServices = [
+  {
+    img: 'electricity.svg',
+    title: 'Electricity'
+  },
+  {
+    img: 'financial.svg',
+    title: 'Financial Services'
+  },
+  {
+    img: 'insurance.svg',
+    title: 'Insurance'
+  },
+  {
+    img: 'internet.svg',
+    title: 'Internet'
+  },
+  {
+    img: 'investment.svg',
+    title: 'Investment'
+  },
+  {
+    img: 'loan.svg',
+    title: 'Loan'
+  },
+  {
+    img: 'pension.svg',
+    title: 'Pension'
+  },
+  {
+    img: 'travel.svg',
+    title: 'Travel'
+  },
+  {
+    img: 'utilities.svg',
+    title: 'Utilities'
+  },
+]
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col ">
        <div className='container mx-auto pt-4 px-8'>
            <NavBar />
-           <div className='p-8'>
+           {/* <div className='p-8'>
              <Hero />
-           </div>
+           </div> */}
            <div>
              <ContentSection />
            </div>
+       </div>
+       <SwipeSlider data={benefits} settings={{ margin: "ml-[4rem]" , width: "w-1/2  md:w-1/5" , bg: 'bg-[#F3F3F3]' }}/>
+       <BusinessBenefits />
+       <div className='container mx-auto px-5'>
+            <h1 className='font-sora font-bold text-3xl my-10'>Planned Services</h1>
+            <div className='flex flex-row justify-center w-11/12 mx-auto flex-wrap'>
+              {
+                plannedServices.map((service,index) => {
+                    return (
+                      <div key={service.title + "--" + index} className='p-6 flex-auto w-1/2 md:w-1/4'>
+                          <Image 
+                          src={service.img}
+                          alt={service.title}
+                          width={48}
+                          height={50} 
+                          className='mb-2'/>
+                        <h1 className='font-sora font-medium text-base'>{service.title}</h1>
+                      </div>
+                    )
+                })
+              }
+                
+            </div>
        </div>
        
       {/* <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">

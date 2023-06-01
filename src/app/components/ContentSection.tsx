@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+import { SwipeSlider } from "./index";
 
 const features = [
     {
@@ -33,9 +34,49 @@ const joinUs = [
     'Provides a means of generating income for entrepreneurial platform users'
 ]
 
+const benefits = [
+    {
+        img: 'direct-reward.svg',
+        title: 'Direct reward',
+        description: 'Most transactions come with a reward or a cash back'
+    },
+    {
+        img: '/youthful-modern.svg',
+        title: 'Youthful and modern',
+        description: 'Digitized transactions and engagements'
+    },
+    {
+        img: 'nexus.svg',
+        title: 'Nexus',
+        description: 'Bringing all your digital transactions in one place'
+    },
+    {
+        img: '/youthful-modern.svg',
+        title: 'Youthful and modern',
+        description: 'Digitized transactions and engagements'
+    },
+    {
+        img: 'nexus.svg',
+        title: 'Nexus',
+        description: 'Bringing all your digital transactions in one place'
+    },
+    {
+        img: '/youthful-modern.svg',
+        title: 'Youthful and modern',
+        description: 'Digitized transactions and engagements'
+    },
+    {
+        img: 'nexus.svg',
+        title: 'Nexus',
+        description: 'Bringing all your digital transactions in one place'
+    },
+  
+  ]
+
 export function ContentSection(){
     return (
-        <div className="container mx-auto px-4">
+        
+            <div className="container mx-auto px-4">
                <h2 className="font-sora font-bold text-3xl mb-3 text-center">What is Dynamo?</h2>
                <p className="font-sora font-light text-base mb-3">Dynamo is an optimized digital platform providing access to multiple consumer-facing services across various emerging and underserved markets. The platform creates easy access to an aggregated service environment directly and uniquely allows any user to recommend and promote a service to any other eligible user for a reward. This secondary feature was purpose built to accommodate the significant population that are currently digitally handicapped due to poor access to internet; device constraints; or low digital literacy.</p>
                <p className="font-sora font-light text-base mb-3">As a business-to-business-to-consumer (B2B2C) environment, Dynamo creates efficiency and accountability for the field forces of service providers while decreasing customer acquisition costs. A wealth of data analytics on customer behavior and service distribution is captured that service providers can leverage on for service improvement and distribution.</p>
@@ -84,7 +125,10 @@ export function ContentSection(){
                         </ul>
                     </div>
                </div>
-               <h2 className="font-sora text-3xl font-bold py-12">What are the benefits you enjoy</h2>
-        </div>
+               <h2 className="font-sora text-3xl font-bold pt-12 pb-8">What are the benefits you enjoy</h2>  
+           </div>
+       
+       
+        
     )
 }
