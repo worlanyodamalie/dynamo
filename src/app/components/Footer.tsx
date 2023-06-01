@@ -63,7 +63,7 @@ export function Footer(){
                     <div>
                        <Link href="/">
                             <Image 
-                            src="/logo.svg"
+                            src="/Logo.svg"
                             alt="Dynamo Logo"
                             width={140}
                             height={20}

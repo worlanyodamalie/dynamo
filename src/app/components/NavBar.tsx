@@ -9,7 +9,7 @@ export function NavBar ()  {
             <div className="flex-1">
                  <Link href="/">
                      <Image 
-                       src="/logo.svg"
+                       src="/Logo.svg"
                        alt="Dynamo Logo"
                        width={120}
                        height={20}
