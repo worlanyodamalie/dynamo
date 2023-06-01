@@ -36,7 +36,7 @@ export function BusinessBenefits(){
             <p className="font-sora font-bold text-3xl py-6">What are the benefit to your business</p>
             <SwipeSlider data={benefits} settings={{ margin: "" , width: "w-1/2 md:w-1/4" , bg: 'bg-[#EAE9E9]' }}/>
             <div className="mt-10">
-                 <Link className="flex flex-row gap-2 items-center font-sora font-semibold text-2xl align-top" href="/">
+                 <Link className="flex flex-row gap-2 items-center font-sora font-semibold text-2xl align-top" href="/join">
                     Partner with us 
                       <div >
                         <Image 

@@ -20,8 +20,8 @@ const data = [
 
 export function Hero(){
     return (
-        <div className="hero min-h-screen">
-            <div className="hero-content flex-row gap-12">
+        <div className="hero min-h-screen mb-[5rem]">
+            <div className="hero-content flex-row flex-wrap gap-16">
                 <div>
                     <Image 
                        src="/hero.svg"
@@ -31,7 +31,7 @@ export function Hero(){
                     />
                 </div>
                 <div>
-                    <h2 className="font-sora font-bold text-6xl break-words mb-2 w-2/3">Rewarding your daily life</h2>
+                    <h2 className="font-sora font-bold  text-3xl  md:text-6xl break-words mb-2 lg:w-2/3">Rewarding your daily life</h2>
                     <h6 className="font-sora font-normal text-sm mb-6">Unlocking and creating opportunities in our digital world</h6>
                     <div className="flex flex-row items-center gap-6">
                         {

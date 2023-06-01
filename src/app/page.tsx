@@ -88,6 +88,7 @@ export default function Home() {
            {/* <div className='p-8'>
              <Hero />
            </div> */}
+            <Hero />
            <div>
              <ContentSection />
            </div>
