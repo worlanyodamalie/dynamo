@@ -82,16 +82,10 @@ const plannedServices = [
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col ">
+    <div >
        <div className='container mx-auto pt-4 px-8'>
-           <NavBar />
-           {/* <div className='p-8'>
-             <Hero />
-           </div> */}
             <Hero />
-           <div>
-             <ContentSection />
-           </div>
+            <ContentSection />
        </div>
        <SwipeSlider data={benefits} settings={{ margin: "ml-[4rem]" , width: "w-1/2  md:w-1/5" , bg: 'bg-[#F3F3F3]' }}/>
        <BusinessBenefits />
@@ -228,6 +222,6 @@ export default function Home() {
           </p>
         </a>
       </div> */}
-    </main>
+    </div>
   )
 }
