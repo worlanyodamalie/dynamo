@@ -33,7 +33,7 @@ export function Footer(){
                         </Link>
                     </li>
                     <li>
-                        <Link href="/">
+                        <Link href="/blog">
                             <h3 className="font-sora text-sm font-light">Blog</h3>
                         </Link>
                     </li>
