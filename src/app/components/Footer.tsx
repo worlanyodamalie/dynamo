@@ -58,7 +58,7 @@ export function Footer(){
                 }
                   
              </div>
-             <div className="flex justify-between flex-row">
+             <div className="flex flex-wrap justify-between flex-row">
                 <div className="flex flex-row w-2/5 justify-between">
                     <div>
                        <Link href="/">
