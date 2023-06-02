@@ -21,8 +21,8 @@ const groups = [
 export default function Join(){
     return (
        
-                <div className="w-full rounded-sm p-4 bg-[#F4F4F4]">
-                     <div className="flex gap-3 flex-row">
+                <div className="w-10/12 mx-auto rounded-sm mt-10 p-8 bg-[#F4F4F4]">
+                     <div className="flex gap-3 flex-row justify-center">
                         {
                             groups.map((group,index) => {
                                 return (
