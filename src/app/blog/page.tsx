@@ -1,7 +1,12 @@
 import React from "react";
 import Image from "next/image";
+import { createClient } from "next-sanity";
 
-export default function layout(){
+const client = createClient({
+  projectId: ''  
+})
+
+export default function Blog(){
     
     return (
         <div className="flex flex-col justify-center items-center p-6">
