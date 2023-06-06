@@ -1,8 +1,13 @@
+'use client'
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+import {useRouter} from 'next/navigation'
 
 export function NavBar ()  {
+  
+    const router = useRouter()
+    
    return (
     <div>
         <div className="navbar">
@@ -29,7 +34,7 @@ export function NavBar ()  {
                         </Link>
                     </li>
                     <li>
-                        <button className="btn btn-outline font-sora text-sm font-medium normal-case">Join us</button>
+                        <button className="btn btn-outline font-sora text-sm font-medium normal-case" onClick={() => router.push('/join')}>Join us</button>
                     </li>
                     <li tabIndex={0}>
                         <a className="font-sora text-sm font-medium">EN</a>

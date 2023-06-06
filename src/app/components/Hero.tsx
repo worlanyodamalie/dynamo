@@ -22,7 +22,7 @@ export function Hero(){
     return (
         <div className="hero min-h-screen mb-[5rem]">
             <div className="hero-content flex-row gap-8 flex-wrap">
-                <div className="w-4/12">
+                <div className="">
                     <Image 
                        src="/hero.svg"
                        width={250}

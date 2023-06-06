@@ -1,9 +1,9 @@
 import './globals.css'
-import { Inter , Sora } from 'next/font/google'
+import {  Sora } from 'next/font/google'
 import { NavBar } from './components/index'
 
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 
 const sora = Sora({
    weight: ["300" , "400" , "500","600","700"],

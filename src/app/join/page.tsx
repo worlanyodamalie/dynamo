@@ -1,6 +1,8 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React  from "react";
+import { Contact } from "../components";
 
 const groups = [
     {
@@ -18,15 +20,38 @@ const groups = [
 
 ]
 
+
+
+
 export default function Join(){
+   
+    // const { status , setStatus } = useState(false)
+    const [title, setTitle] = React.useState('')
+
+    function contactSubmit(group: string){
+        
+        switch (group) {
+           case 'Individual':
+           case 'Organisation':
+            case 'Company':
+               setTitle(group)
+               break;
+        
+           default:
+               break;
+        }
+   }
+
     return (
        
-                <div className="w-10/12 mx-auto rounded-sm mt-10 p-8 bg-[#F4F4F4]">
+                <div className="w-10/12 mx-auto rounded-sm mt-10 mb-6 p-8 bg-[#F4F4F4]">
                      <div className="flex gap-3 flex-row justify-center">
                         {
                             groups.map((group,index) => {
                                 return (
-                                <div key={group.title + "--" + index} className="flex-col p-6 bg-[#ECECEC]">
+                                <div key={group.title + "--" + index} className="flex-col p-6 bg-[#ECECEC] cursor-pointer"
+                                 onClick={() => contactSubmit(group.title)}
+                                >
                                     <div>
                                         <Image 
                                           src={group.img}
@@ -45,6 +70,15 @@ export default function Join(){
                                   </div>
                                 )
                             })
+                        }
+                        
+                     </div>
+                     
+                     <div>
+                        {
+                            title === 'Individual' || title === 'Company'  || title === 'Organisation' ? (
+                                <Contact />
+                            ) : null
                         }
                         
                      </div>
