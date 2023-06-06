@@ -3,10 +3,60 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import {useRouter} from 'next/navigation'
+import { getCookie,hasCookie,setCookie } from 'cookies-next'
 
 export function NavBar ()  {
   
     const router = useRouter()
+
+    const languages = [
+        {title: 'EN' , label: 'English' , value: '/auto/en'},
+        {title: 'FR' ,label: 'French' , value: '/auto/fr'}
+    ]
+
+    const [selected,setSelected] = React.useState(null)
+    const [selectedTitle, setSelectedTitle] = React.useState('EN')
+
+    const googleTranslateElementInit = () => {
+
+        new window.google.translate.TranslateElement({
+            pageLanguage: 'auto',
+            autoDisplay: false,
+            includedLanguages: "en,fr",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        },
+            'google_translate_element');
+    }
+
+    React.useEffect(() => {
+        var addScript = document.createElement('script');
+        addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+        document.body.appendChild(addScript);
+        window.googleTranslateElementInit = googleTranslateElementInit;
+
+        if(hasCookie('googtrans')){
+            setSelected(getCookie('googtrans'))
+            }
+            else{
+            setSelected('/auto/en')
+            }
+
+    }, [])
+
+    function handleChange(e){
+        // console.log("handleChange" , e)
+       if(hasCookie('googtrans')){
+         setCookie('googtrans',decodeURI(e.value))
+         setSelected(e)
+         setSelectedTitle(e.title)
+       }
+       else{
+          setCookie('googtrans',e.value)
+          setSelected(e.value)
+          setSelectedTitle(e.title)
+       }
+       window.location.reload()
+    }
     
    return (
     <div>
@@ -37,15 +87,22 @@ export function NavBar ()  {
                         <button className="btn btn-outline font-sora text-sm font-medium normal-case" onClick={() => router.push('/join')}>Join us</button>
                     </li>
                     <li tabIndex={0}>
-                        <a className="font-sora text-sm font-medium">EN</a>
+                        <a className="font-sora text-sm font-medium notranslate">{selectedTitle}</a>
                         <ul className="p-2">
-                            <li><a className="font-sora text-sm font-medium">EN</a></li>
-                            <li><a className="font-sora text-sm font-medium">FR</a></li>
+                            {
+                                languages.map((language) => {
+                                   return (
+                                    <li key={language.title} onClick={() => handleChange(language)}><a className="font-sora text-sm font-medium notranslate">{language.title}</a></li>
+                                   )
+                                })
+                            }
+                            
                         </ul>
                     </li>
                 </ul>
             </div>
         </div>
+        <div id="google_translate_element" style={{width:'0px',height:'0px',position:'absolute',left:'50%',zIndex:-99999}}></div>
     </div>
    )
 }
