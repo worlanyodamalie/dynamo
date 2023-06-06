@@ -21,13 +21,14 @@ const data = [
 export function Hero(){
     return (
         <div className="hero min-h-screen mb-[5rem]">
-            <div className="hero-content flex-row flex-wrap gap-16">
-                <div>
+            <div className="hero-content flex-row gap-8 flex-wrap">
+                <div className="w-4/12">
                     <Image 
                        src="/hero.svg"
                        width={250}
                        height={300}
                        alt="Hero Image"
+                       
                     />
                 </div>
                 <div>

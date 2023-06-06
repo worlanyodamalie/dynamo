@@ -27,27 +27,42 @@ const ptComponents = {
     }
   }
 
-export default function BlogPost({ params , post }: { params: { slug: string } }){
-    const {
-        title = '',
-        name = '',
-        categories ,
-        imageUrl,
-        body = [],
-        publishedAt
-    } = post
+  const query = groq`*[_type == "post" && slug.current == $slug][0]{
+    title,
+    "name": author->name,
+    "categories": categories[]->title,
+    "imageUrl": mainImage.asset->url,
+    body,
+    publishedAt
+
+}`
+
+async function getPost(query,slug){
+   const post = await client.fetch(query,{slug})
+   return post
+}
+
+export default async function BlogPost({ params  }: { params: { slug: string } }){
+   
+    // console.log("params new" , params.slug)
+
+    const post = await getPost(query,params?.slug)
+
+    // console.log("post",post)
+
+    
     
     return (
         <div className="flex flex-col justify-center items-center p-6">
               <h2 className="font-sora font-normal text-lg mb-2">Blog</h2>
-              <h1 className="font-sora font-semibold text-2xl md:text-4xl mb-1">{title}</h1>
+              <h1 className="font-sora font-semibold text-2xl md:text-4xl mb-1">{post?.title}</h1>
               <p className="font-sora font-light text-lg mb-2">Unlocking and creating opportunities in our digital world</p>
               <div className="w-full lg:w-11/12 relative h-80 md:h-96 mt-8 mb-8">
                 <div className="absolute inset-0 w-full">
                     {
-                        imageUrl && (
+                        post?.imageUrl && (
                             <Image 
-                               src={urlFor(imageUrl)}
+                               src={urlFor(post?.imageUrl).url()}
                                alt="Blog banner"
                                fill
                          />
@@ -56,14 +71,14 @@ export default function BlogPost({ params , post }: { params: { slug: string } }
                     
                 </div>
                 <div className="relative p-4 z-10 flex flex-col justify-end h-80 md:h-96">
-                    <p className="font-sora font-light text-xs text-white mb-2 ">{name} | {new Date(publishedAt).toDateString()}</p>
-                    <h1 className="font-sora font-semibold text-white text-lg ">{title}</h1>
+                    <p className="font-sora font-light text-xs text-white mb-2 ">{post?.name} | {new Date(post?.publishedAt).toDateString()}</p>
+                    <h1 className="font-sora font-semibold text-white text-lg ">{post?.title}</h1>
                     <h2 className="font-sora font-light text-white text-sm mb-1">Unlocking and creating opportunities in our digital world</h2>
                 </div>
                     
             </div>
             <div className="p-4 max-w-7xl mx-auto font-sora font-light text-base mb-2">
-                <PortableText value={body}
+                <PortableText value={post?.body}
                               components={ptComponents}
                 />
                
@@ -86,32 +101,24 @@ export default function BlogPost({ params , post }: { params: { slug: string } }
     )
 }
 
-export async function getStaticPaths(){
-    const paths = await client.fetch(`*[_type == "post" && defined(slug.current)][].slug.current`)
+// export async function getStaticPaths(){
+//     const paths = await client.fetch(`*[_type == "post" && defined(slug.current)][].slug.current`)
 
-    return {
-        paths: paths.map((slug) => ({params: {slug}})),
-        fallback: true
-    }
-}
+//     return {
+//         paths: paths.map((slug) => ({params: {slug}})),
+//         fallback: true
+//     }
+// }
 
-const query = groq`*[_type == "post" && slug.current == $slug][0]{
-    title,
-    "name": author->name,
-    "categories": categories[]->title,
-    "imageUrl": image.asset->url,
-    body,
-    publishedAt
 
-}`
 
-export async function getStaticProps(context) {
-    const {slug = ''} = context.params
-    const post = await client.fetch(query, {slug})
+// export async function getStaticProps(context) {
+//     const {slug = ''} = context.params
+//     const post = await client.fetch(query, {slug})
 
-    return {
-        props: {
-            post
-        }
-    }
-}
+//     return {
+//         props: {
+//             post
+//         }
+//     }
+// }
