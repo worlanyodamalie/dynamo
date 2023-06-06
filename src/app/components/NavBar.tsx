@@ -60,9 +60,9 @@ export function NavBar ()  {
     
    return (
     <div>
-        <div className="navbar">
-            <div className="flex-1">
-                 <Link href="/">
+        <div className="navbar flex-wrap">
+            <div className="md:flex-1 w-full mx-auto">
+                 <Link href="/" className="w-full">
                      <Image 
                        src="/Logo.svg"
                        alt="Dynamo Logo"
@@ -71,7 +71,7 @@ export function NavBar ()  {
                      />
                  </Link>
             </div>
-            <div className="flex-none">
+            <div className="md:flex-none">
                 <ul className="menu menu-horizontal px-1">
                     <li>
                         <Link className="" href="/">
