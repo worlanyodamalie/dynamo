@@ -83,7 +83,7 @@ export function Contact(){
             <input
               type="text"
               placeholder=""
-              className="input input-ghost h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC]"
+              className="input  h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC]"
               {...register("name", { required: true, minLength: 2 })}
             />
             {errors.name?.type === "required" && (
@@ -100,7 +100,7 @@ export function Contact(){
             <input
               type="text"
               placeholder=""
-              className="input input-ghost h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC]"
+              className="input  h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC]"
               {...register("email", { required: "Email Address is required" })}
             />
             {errors.email && (
@@ -117,7 +117,7 @@ export function Contact(){
             <input
               type="text"
               placeholder=""
-              className="input input-ghost h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC]"
+              className="input  h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC]"
               {...register("phone", { required: true })}
             />
             {errors.phone?.type === "required" && (
@@ -134,7 +134,7 @@ export function Contact(){
             <input
               type="text"
               placeholder=""
-              className="input input-ghost h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC]"
+              className="input  h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC]"
               {...register("message", { required: true, minLength: 2 })}
             />
             {errors.message?.type === "required" && (

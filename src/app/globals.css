@@ -34,12 +34,30 @@ body {
   background-color: unset;
 }
 
-input:-webkit-autofill {
+/* input:-webkit-autofill {
   -webkit-background-clip: text !important;
 }
 
 .input{
   background-color: unset;
+} */
+
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+    
+    -webkit-text-fill-color: #000;
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-background-clip: text !important;
+        /* -webkit-box-shadow: 0 0 0px 1000px rgb(232, 240, 254) inset; */
+
+}
+
+.input{
+  background-color: inherit;
+  color: #000 !important;
 }
 
 /* Slick.min.css */
