@@ -5,9 +5,12 @@ import imageUrlBuilder  from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
+import { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
 
 
-
+interface ImageProps extends Omit<React.HTMLProps<HTMLImageElement>, 'src'> {
+    src: string | ImageUrlBuilder;
+  }
 
 function urlFor(source: SanityImageSource){
     return imageUrlBuilder(client).image(source)
@@ -19,13 +22,14 @@ const ptComponents = {
         if (!value?.asset?._ref) {
           return null
         }
+
         return (
           <Image
             alt={value.alt || ' '}
             loading="lazy"
-            src={urlFor(value).width(320).height(240).fit('max').auto('format')}
+            src={urlFor(value).width(320).height(240).fit('max').auto('format').url()}
           />
-        )
+         )
       }
     }
   }
@@ -82,7 +86,7 @@ function truncateBody(body: any){
 
 export default async function Blog(){
     const posts = await getPosts();
-
+    console.log("posts",posts)
 
     return (
         <div className="flex flex-col justify-center items-center p-6">
@@ -117,7 +121,7 @@ export default async function Blog(){
             <div className="flex flex-row flex-wrap w-full lg:w-11/12 gap-5">
               
                 {
-                    posts?.length > 0 && posts?.map(({ _id,title= '' ,slug = '' , publishedAt = '' , body , name , imageUrl }: {_id: string ,title: string ,slug: string , publishedAt: string , body: any , name:string , imageUrl: string}) =>  slug && (
+                    posts?.length > 0 && posts?.map(({ _id,title= '' ,slug  , publishedAt = '' , body , name , imageUrl }: {_id: string ,title: string ,slug:  { _type: string, current: string } , publishedAt: string , body: any , name:string , imageUrl: string}) =>  slug && (
                         <Link key={_id} href={`/blog/${encodeURIComponent(slug.current)}`} className="flex-auto w-1/2 lg:w-3/12 md:w-4/12  max-w-sm">
                          <div className="">
                              <div className="relative h-52 md:h-60 mb-4">
