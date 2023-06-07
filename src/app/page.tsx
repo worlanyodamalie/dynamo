@@ -1,6 +1,7 @@
 import Image from 'next/image'
-import { NavBar , Hero , ContentSection, SwipeSlider,BusinessBenefits, Contact , Footer} from './components/index'
-
+import {LoadingScreen ,  NavBar , Hero , ContentSection, SwipeSlider,BusinessBenefits, Contact , Footer} from './components/index'
+import { Suspense } from "react";
+import Loading from './loading';
 
 const benefits = [
   {
@@ -82,41 +83,56 @@ const plannedServices = [
 
 export default function Home() {
   return (
-    <div >
-       <div className='container mx-auto pt-4 px-8'>
-            <Hero />
-            <ContentSection />
-       </div>
-       <SwipeSlider data={benefits} settings={{ margin: "ml-[4rem]" , width: "w-1/2  md:w-1/5" , bg: 'bg-[#F3F3F3]' }}/>
-       <BusinessBenefits />
-       <div className='container mx-auto px-5'>
-            <h1 className='font-sora font-bold text-3xl my-10'>Planned Services</h1>
-            <div className='flex flex-row justify-center w-11/12 mx-auto flex-wrap'>
-              {
-                plannedServices.map((service,index) => {
-                    return (
-                      <div key={service.title + "--" + index} className='p-6 flex-auto w-1/2 md:w-1/4'>
-                          <Image 
-                          src={service.img}
-                          alt={service.title}
-                          width={48}
-                          height={50} 
-                          className='mb-2'/>
-                        <h1 className='font-sora font-medium text-base'>{service.title}</h1>
-                      </div>
-                    )
-                })
-              }
-                
-            </div>
-       </div>
-       <div className='py-5'>
-         <Contact />
-       </div>
-       <div className='mt-10'>
-         <Footer />
-       </div>
-       
+    <Suspense fallback={<Loading />}>  
+    <div>
+      <div className="container mx-auto pt-4  px-4">
+        <Hero />
+        <ContentSection />
+      </div>
+      <SwipeSlider
+        data={benefits}
+        settings={{
+          margin: "ml-[2rem] md:ml-[4rem]",
+          width: "w-1/2  md:w-1/5",
+          bg: "bg-[#F3F3F3]",
+        }}
+      />
+      <BusinessBenefits />
+      <div className="container mx-auto md:pl-10">
+        <h1 className="font-sora font-bold text-2xl my-10 md:pl-0 pl-9">Planned Services</h1>
+        <div className="flex flex-row justify-center w-11/12 mx-auto flex-wrap">
+          {plannedServices.map((service, index) => {
+            return (
+              <div
+                key={service.title + "--" + index}
+                className="p-6 flex-auto w-1/2 md:w-1/4"
+              >
+                <Image
+                  src={service.img}
+                  alt={service.title}
+                  width={48}
+                  height={50}
+                  className="mb-2"
+                />
+                <h1 className="font-sora font-medium text-base">
+                  {service.title}
+                </h1>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className="py-5">
+        <div className="container mx-auto px-4">
+          <div className="w-full border-t-[0.7px] border-[#C9C9C9] mt-8 mb-8"></div>
+          <h2 className="font-sora text-2xl font-bold mb-10  text-center">
+            Contact Us
+          </h2>
+        </div>
+        <Contact />
+      </div>
+      
+
       {/* <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;
@@ -223,5 +239,6 @@ export default function Home() {
         </a>
       </div> */}
     </div>
-  )
+   </Suspense> 
+  );
 }

@@ -1,6 +1,6 @@
 import './globals.css'
 import {  Sora } from 'next/font/google'
-import { NavBar } from './components/index'
+import { NavBar , Footer } from './components/index'
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -26,10 +26,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${sora.variable}`}>
         <main className="flex min-h-screen flex-col ">
-            <div className='container mx-auto pt-4 px-8'><NavBar /></div>
+            <div className='container mx-auto pt-4 md:px-8 px-4'><NavBar /></div>
             {children}
         </main>
-        
+        <div className="mt-10">
+          <Footer />
+       </div>
       </body>
     </html>
   )

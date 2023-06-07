@@ -112,7 +112,7 @@ export function ContentSection(){
                         className="mx-auto"/>
                     </div>
                     <div className="flex-auto w-3/6">
-                        <h2 className="font-sora font-bold text-3xl mb-8 text-left">Join Us</h2>
+                        <h2 className="font-sora font-bold text-3xl mb-8 md:text-left text-center">Join Us</h2>
                         <ul className="list-decimal">
                             {
                                 joinUs.map((item,index) => {
@@ -125,7 +125,7 @@ export function ContentSection(){
                         </ul>
                     </div>
                </div>
-               <h2 className="font-sora text-3xl font-bold pt-12 pb-8">What are the benefits you enjoy</h2>  
+               <h2 className="font-sora md:text-3xl text-2xl font-bold pt-12 pb-8">What are the benefits you enjoy</h2>  
            </div>
        
        

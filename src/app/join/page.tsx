@@ -45,7 +45,7 @@ export default function Join(){
     return (
        
                 <div className="w-10/12 mx-auto rounded-sm mt-10 mb-6 p-8 bg-[#F4F4F4]">
-                     <div className="flex gap-3 flex-row justify-center">
+                     <div className="flex md:flex-nowrap flex-wrap gap-3 flex-row justify-center">
                         {
                             groups.map((group,index) => {
                                 return (
@@ -74,10 +74,18 @@ export default function Join(){
                         
                      </div>
                      
-                     <div>
+                     <div className="my-8">
                         {
                             title === 'Individual' || title === 'Company'  || title === 'Organisation' ? (
-                                <Contact />
+                                
+
+                                <div >
+                                    <div className=" mx-auto  md:w-2/5">
+                                       <h2 className="font-sora text-base font-semibold mb-2">{title}</h2>
+                                   </div>
+                                     <Contact />
+                                </div>
+                               
                             ) : null
                         }
                         

@@ -59,8 +59,8 @@ export default async function BlogPost({ params  }: { params: { slug: string } }
         <div className="flex flex-col justify-center items-center p-6">
               <h2 className="font-sora font-normal text-lg mb-2">Blog</h2>
               <h1 className="font-sora font-semibold text-2xl md:text-4xl mb-1">{post?.title}</h1>
-              <p className="font-sora font-light text-lg mb-2">Unlocking and creating opportunities in our digital world</p>
-              <div className="w-full lg:w-11/12 relative h-80 md:h-96 mt-8 mb-8">
+              <p className="font-sora font-light text-lg mb-2 md:text-start text-center">Unlocking and creating opportunities in our digital world</p>
+              <div className="w-full lg:w-11/12 relative h-52 md:h-96 mt-8 mb-8">
                 <div className="absolute inset-0 w-full">
                     {
                         post?.imageUrl && (
@@ -73,14 +73,14 @@ export default async function BlogPost({ params  }: { params: { slug: string } }
                     }
                     
                 </div>
-                <div className="relative p-4 z-10 flex flex-col justify-end h-80 md:h-96">
+                <div className="relative p-4 z-10 flex flex-col justify-end h-52 md:h-96">
                     <p className="font-sora font-light text-xs text-white mb-2 ">{post?.name} | {new Date(post?.publishedAt).toDateString()}</p>
                     <h1 className="font-sora font-semibold text-white text-lg ">{post?.title}</h1>
                     <h2 className="font-sora font-light text-white text-sm mb-1">Unlocking and creating opportunities in our digital world</h2>
                 </div>
                     
             </div>
-            <div className="p-4 max-w-7xl mx-auto font-sora font-light text-base mb-2">
+            <div className="md:p-4 max-w-7xl mx-auto font-sora font-light text-base mb-2">
                 <PortableText value={post?.body}
                               components={ptComponents}
                 />

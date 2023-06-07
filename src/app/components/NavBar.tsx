@@ -65,8 +65,8 @@ export function NavBar ()  {
    return (
     <div>
         <div className="navbar flex-wrap">
-            <div className="md:flex-1 w-full mx-auto">
-                 <Link href="/" className="w-full">
+            <div className="md:flex-1 w-full mx-auto md:justify-start flex flex-row justify-center md:pb-0 pb-3">
+                 <Link href="/" className="md:w-full">
                      <Image 
                        src="/Logo.svg"
                        alt="Dynamo Logo"
