@@ -86,7 +86,6 @@ function truncateBody(body: any){
 
 export default async function Blog(){
     const posts = await getPosts();
-    console.log("posts",posts)
 
     return (
         <div className="flex flex-col justify-center items-center p-6">

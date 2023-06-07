@@ -48,7 +48,7 @@ export default async function createContact(req: NextApiRequest,res: NextApiResp
              status: response.status
           })
 
-    } catch (e) {
+    } catch (e:any) {
         // console.log("error",e)
         return res.status(e.code).send({message: e.message})
     }

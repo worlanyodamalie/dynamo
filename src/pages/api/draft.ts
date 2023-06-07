@@ -14,7 +14,7 @@ const client = createClient({
   })
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default async (req,res) => {   
+export default async (req: { query: { secret: string | undefined; }; },res: { status: (arg0: number) => { (): any; new(): any; json: { (arg0: { message: string; }): any; new(): any; }; }; setDraftMode: (arg0: { enable: boolean; }) => void; redirect: (arg0: string) => void; }) => {   
      if(req.query.secret !== process.env.DRAFT_TOKEN){
         return res.status(401).json({message: 'Invalid token'})
      } 

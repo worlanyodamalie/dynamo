@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import {useRouter} from 'next/navigation'
-import { getCookie,hasCookie,setCookie } from 'cookies-next'
+import { getCookie,hasCookie,setCookie , CookieValueTypes } from 'cookies-next'
 
 export function NavBar ()  {
   
@@ -14,8 +14,8 @@ export function NavBar ()  {
         {title: 'FR' ,label: 'French' , value: '/auto/fr'}
     ]
 
-    const [selected,setSelected] = React.useState(null)
-    const [selectedTitle, setSelectedTitle] = React.useState('EN')
+    const [selected,setSelected] = React.useState<CookieValueTypes>('')
+    const [selectedTitle, setSelectedTitle] = React.useState<CookieValueTypes>('EN')
 
     const googleTranslateElementInit = () => {
 
@@ -23,7 +23,7 @@ export function NavBar ()  {
             pageLanguage: 'auto',
             autoDisplay: false,
             includedLanguages: "en,fr",
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE
         },
             'google_translate_element');
     }
@@ -33,9 +33,11 @@ export function NavBar ()  {
         addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
         document.body.appendChild(addScript);
         window.googleTranslateElementInit = googleTranslateElementInit;
+        
+        let googleTrans = getCookie('googtrans')
 
         if(hasCookie('googtrans')){
-            setSelected(getCookie('googtrans'))
+            setSelected(googleTrans)
             }
             else{
             setSelected('/auto/en')
