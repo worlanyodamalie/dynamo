@@ -15,7 +15,7 @@ function urlFor(source: SanityImageSource){
 
 const ptComponents = {
     types: {
-      image: ({ value }) => {
+      image: ({ value }: any) => {
         if (!value?.asset?._ref) {
           return null
         }
@@ -49,7 +49,7 @@ async function getPosts(){
     return posts
 }
 
-function truncateBody(body){
+function truncateBody(body: any){
 
     //return (str.length > maxlength) ?
     // str.slice(0, maxlength - 1) + '…' : str;
@@ -117,7 +117,7 @@ export default async function Blog(){
             <div className="flex flex-row flex-wrap w-full lg:w-11/12 gap-5">
               
                 {
-                    posts?.length > 0 && posts?.map(({ _id,title= '' ,slug = '' , publishedAt = '' , body , name , imageUrl }) =>  slug && (
+                    posts?.length > 0 && posts?.map(({ _id,title= '' ,slug = '' , publishedAt = '' , body , name , imageUrl }: {_id: string ,title: string ,slug: string , publishedAt: string , body: any , name:string , imageUrl: string}) =>  slug && (
                         <Link key={_id} href={`/blog/${encodeURIComponent(slug.current)}`} className="flex-auto w-1/2 lg:w-3/12 md:w-4/12  max-w-sm">
                          <div className="">
                              <div className="relative h-52 md:h-60 mb-4">

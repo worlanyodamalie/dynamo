@@ -25,7 +25,7 @@ export function Hero(){
         <div className="hidden md:mt-0 md:col-span-5 md:flex">
                  <Image 
                       src="/mobile.gif"
-                      width={800}
+                      width={650}
                       height={650}
                      alt="Hero Image"
                 />

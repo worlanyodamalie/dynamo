@@ -12,7 +12,7 @@ function urlFor(source: SanityImageSource){
 
 const ptComponents = {
     types: {
-      image: ({ value }) => {
+      image: ({ value }: any) => {
         if (!value?.asset?._ref) {
           return null
         }
@@ -37,7 +37,7 @@ const ptComponents = {
 
 }`
 
-async function getPost(query,slug){
+async function getPost(query: string,slug: string){
    const post = await client.fetch(query,{slug})
    return post
 }

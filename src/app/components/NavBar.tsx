@@ -39,21 +39,23 @@ export function NavBar ()  {
             }
             else{
             setSelected('/auto/en')
+            setCookie('lang' , 'EN')
             }
-
+            setSelectedTitle(getCookie('lang'))
     }, [])
 
-    function handleChange(e){
+    function handleChange(e: any){
         // console.log("handleChange" , e)
+        setCookie('lang' , e.title)
        if(hasCookie('googtrans')){
-         setCookie('googtrans',decodeURI(e.value))
+         setCookie('googtrans',decodeURI(e?.value))
          setSelected(e)
-         setSelectedTitle(e.title)
+         setSelectedTitle(e?.title)
        }
        else{
-          setCookie('googtrans',e.value)
-          setSelected(e.value)
-          setSelectedTitle(e.title)
+          setCookie('googtrans',e?.value)
+          setSelected(e?.value)
+          setSelectedTitle(e?.title)
        }
        window.location.reload()
     }
