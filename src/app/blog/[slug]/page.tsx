@@ -4,6 +4,8 @@ import { groq } from "next-sanity";
 import imageUrlBuilder  from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { PortableText } from "@portabletext/react";
+import Loading from "../loading";
+import { Suspense } from "react";
 
 
 function urlFor(source: SanityImageSource){
@@ -53,6 +55,7 @@ export default async function BlogPost({ params  }: { params: { slug: string } }
     
     
     return (
+      <Suspense fallback={<Loading />}>
         <div className="flex flex-col justify-center items-center p-6">
               <h2 className="font-sora font-normal text-lg mb-2">Blog</h2>
               <h1 className="font-sora font-semibold text-2xl md:text-4xl mb-1">{post?.title}</h1>
@@ -98,6 +101,7 @@ export default async function BlogPost({ params  }: { params: { slug: string } }
             </div>
 
         </div>
+        </Suspense>  
     )
 }
 

@@ -6,6 +6,8 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
+import { Suspense } from "react";
+import Loading from "./loading";
 
 
 interface ImageProps extends Omit<React.HTMLProps<HTMLImageElement>, 'src'> {
@@ -88,7 +90,8 @@ export default async function Blog(){
     const posts = await getPosts();
 
     return (
-        <div className="flex flex-col justify-center items-center p-6">
+      <Suspense fallback={<Loading />}>
+             <div className="flex flex-col justify-center items-center p-6">
             <h2 className="font-sora font-normal text-lg mb-2">Blog</h2>
             <h1 className="font-sora font-semibold text-2xl md:text-4xl mb-1">Rewarding your daily life</h1>
             <p className="font-sora font-light text-lg mb-2">Unlocking and creating opportunities in our digital world</p>
@@ -176,6 +179,8 @@ export default async function Blog(){
             </div>
 
         </div>
+      </Suspense>  
+        
     )
 } 
 
