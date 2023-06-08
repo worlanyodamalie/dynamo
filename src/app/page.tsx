@@ -88,18 +88,23 @@ export default function Home() {
       <div className="container mx-auto pt-4  px-4">
         <Hero />
         <ContentSection />
+        <div className='px-4'>
+          <SwipeSlider
+            data={benefits}
+            settings={{
+              // margin: "ml-[2rem] md:ml-[4rem]",
+              margin: "",
+              width: "w-1/2  md:w-1/5",
+              bg: "bg-[#F3F3F3]",
+            }}
+        />
+        </div>
       </div>
-      <SwipeSlider
-        data={benefits}
-        settings={{
-          margin: "ml-[2rem] md:ml-[4rem]",
-          width: "w-1/2  md:w-1/5",
-          bg: "bg-[#F3F3F3]",
-        }}
-      />
+      
+      
       <BusinessBenefits />
-      <div className="container mx-auto md:pl-10">
-        <h1 className="font-sora font-bold text-2xl my-10 md:pl-0 pl-9">Planned Services</h1>
+      <div className="container mx-auto px-8">
+        <h1 className="font-sora font-bold text-2xl my-10 ">Planned Services</h1>
         <div className="flex flex-row justify-center w-11/12 mx-auto flex-wrap">
           {plannedServices.map((service, index) => {
             return (

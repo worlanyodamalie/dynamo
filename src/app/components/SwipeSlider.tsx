@@ -24,7 +24,7 @@ import React from "react"
 
 export function SwipeSlider({data,settings}:SwipeDataType ){
     return (
-        <div className=" w-full pb-10">
+        <div className="pb-10 ">
             <div className={`carousel flex-row gap-3  ${settings?.margin} ` }>
             {
                   data.map((item,index) => {

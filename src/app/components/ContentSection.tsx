@@ -125,7 +125,18 @@ export function ContentSection(){
                         </ul>
                     </div>
                </div>
-               <h2 className="font-sora md:text-3xl text-2xl font-bold pt-12 pb-8">What are the benefits you enjoy</h2>  
+               <h2 className="font-sora md:text-3xl text-2xl font-bold pt-12 pb-4">What are the benefits you enjoy</h2>  
+               {/* <div className="pb-10">
+               <SwipeSlider
+                    data={benefits}
+                    settings={{
+                    margin: "ml-[2rem] md:ml-[4rem]",
+                    width: "w-1/2  md:w-1/5",
+                    bg: "bg-[#F3F3F3]",
+                    }}
+                />
+
+               </div> */}
            </div>
        
        
