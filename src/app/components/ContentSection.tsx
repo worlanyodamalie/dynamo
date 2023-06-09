@@ -78,8 +78,8 @@ export function ContentSection(){
         
             <div className="container mx-auto px-4 py-5">
                <h2 className="font-sora font-bold text-3xl mb-3 text-center">What is Dynamo?</h2>
-               <p className="font-sora font-light text-base mb-3">Dynamo is an optimized digital platform providing access to multiple consumer-facing services across various emerging and underserved markets. The platform creates easy access to an aggregated service environment directly and uniquely allows any user to recommend and promote a service to any other eligible user for a reward. This secondary feature was purpose built to accommodate the significant population that are currently digitally handicapped due to poor access to internet; device constraints; or low digital literacy.</p>
-               <p className="font-sora font-light text-base mb-3">As a business-to-business-to-consumer (B2B2C) environment, Dynamo creates efficiency and accountability for the field forces of service providers while decreasing customer acquisition costs. A wealth of data analytics on customer behavior and service distribution is captured that service providers can leverage on for service improvement and distribution.</p>
+               <p className="font-sora font-extralight text-base mb-3">Dynamo is an optimized digital platform providing access to multiple consumer-facing services across various emerging and underserved markets. The platform creates easy access to an aggregated service environment directly and uniquely allows any user to recommend and promote a service to any other eligible user for a reward. This secondary feature was purpose built to accommodate the significant population that are currently digitally handicapped due to poor access to internet; device constraints; or low digital literacy.</p>
+               <p className="font-sora font-extralight text-base mb-3">As a business-to-business-to-consumer (B2B2C) environment, Dynamo creates efficiency and accountability for the field forces of service providers while decreasing customer acquisition costs. A wealth of data analytics on customer behavior and service distribution is captured that service providers can leverage on for service improvement and distribution.</p>
                <p className="my-8 font-sora text-lg font-semibold">The platform&apos;s key feature include:</p>
                <div className="flex flex-row flex-wrap gap-6">
                   {
@@ -95,7 +95,7 @@ export function ContentSection(){
                                        />
                                   </div> 
                                   <h2 className='font-sora text-base font-semibold mb-3'>{feature.title}</h2>
-                                  <p className="font-sora text-base font-light">{feature.description}</p>
+                                  <p className="font-sora text-base font-extralight">{feature.description}</p>
                             </div>
                         )
                     })

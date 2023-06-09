@@ -21,13 +21,12 @@ const data = [
 export function Hero(){
   return (
     <div className="hero min-h-screen pb-10">
-      <div className="hero-content flex-col gap-10 lg:flex-row">
-       
-        <div>
-          <Image src="/mobile.gif" width={200} height={350} alt="Hero Image" />
+      <div className="hero-content flex-col gap-10 md:flex-row">
+        <div className="md:flex-[0_0_30%]">
+          <Image src="/mobile.gif" width={450} height={300} alt="Hero Image"  />
         </div>
         <div>
-            <h2 className="font-sora font-bold  text-3xl  md:text-6xl break-words mb-2 max-w-xl">Rewarding your daily life</h2>
+            <h2 className="font-sora font-bold  text-3xl  lg:text-6xl break-words mb-2 max-w-xl">Rewarding your daily life</h2>
             <h6 className="font-sora font-normal text-base mb-6">Unlocking and creating opportunities in our digital world</h6>
             <div className="flex flex-row items-center gap-6">
             {

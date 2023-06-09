@@ -6,7 +6,7 @@ import { NavBar , Footer } from './components/index'
 // const inter = Inter({ subsets: ['latin'] })
 
 const sora = Sora({
-   weight: ["300" , "400" , "500","600","700"],
+   weight: ["200","300" , "400" , "500","600","700"],
    variable: '--font-sora',
    subsets: ['latin'],
    display: 'swap',
