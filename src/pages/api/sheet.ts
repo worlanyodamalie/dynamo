@@ -1,12 +1,12 @@
 import type {NextApiRequest,NextApiResponse} from 'next'
 import {google} from "googleapis"
 
-type Contact = {
-    name: string,
-    email: string,
-    phone: string,
-    message: string
-}
+// type Contact = {
+//     name: string,
+//     email: string,
+//     phone: string,
+//     message: string
+// }
 
 export default async function createContact(req: NextApiRequest,res: NextApiResponse){
    
@@ -14,7 +14,8 @@ export default async function createContact(req: NextApiRequest,res: NextApiResp
         return res.status(405).send({message: 'Only POST requests allowed'})
     }
 
-    const contact = req.body as Contact
+    // const contact = req.body as Contact
+    const contact = req.body
 
     try {
 
@@ -35,10 +36,10 @@ export default async function createContact(req: NextApiRequest,res: NextApiResp
 
           const response = await sheets.spreadsheets.values.append({
             spreadsheetId: process.env.SPREADSHEET_ID,
-            range: 'Sheet1!A2:D',
+            range: contact?.range,
             valueInputOption: 'USER_ENTERED',
             requestBody: {
-              values: [[contact?.name,contact?.email,contact?.phone,contact?.message]],
+              values: [contact?.data],
             },
           });
 

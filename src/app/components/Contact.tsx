@@ -16,7 +16,7 @@ type Inputs = {
 
 
 
-export function Contact(){
+export function Contact({range}:{range: string}){
     const {register,handleSubmit,formState,formState: {errors , isSubmitSuccessful},reset} = useForm<Inputs>()
     
     const [loadingState,setLoadingState] = React.useState(false)
@@ -36,14 +36,21 @@ export function Contact(){
 
       const notify = () => toast('Thanks for contacting us. We will get back to you soon')
 
-    const onSubmit: SubmitHandler<Inputs> = async (data) => {
+      const onSubmit: SubmitHandler<Inputs> = async (data) => {
         setLoadingState(true)
 
-        const contact = {
-            name: data?.name,
-            phone: data?.phone,
-            email: data?.email,
-            message: data?.message
+        // const contact = {
+        //     name: data?.name,
+        //     phone: data?.phone,
+        //     email: data?.email,
+        //     message: data?.message
+        // }
+
+        const contact = [data?.name , data?.email , data?.phone ,  data?.message ]
+
+        const sheetData = {
+            range: range,
+            data: contact
         }
         
         const response = await fetch('/api/sheet' , {
@@ -52,7 +59,7 @@ export function Contact(){
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(contact)
+            body: JSON.stringify(sheetData)
         })
 
         
@@ -170,4 +177,8 @@ export function Contact(){
         <ToastContainer />
       </div>
     );
+}
+
+Contact.defaultProps = {
+    range: 'Contacts!A2:D'
 }

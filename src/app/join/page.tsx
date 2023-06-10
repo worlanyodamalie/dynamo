@@ -1,8 +1,7 @@
 "use client"
 import Image from "next/image";
-import Link from "next/link";
 import React  from "react";
-import { Contact } from "../components";
+import { Contact , JoinContact } from "../components";
 
 const groups = [
     {
@@ -27,6 +26,7 @@ export default function Join(){
    
     // const { status , setStatus } = useState(false)
     const [title, setTitle] = React.useState('')
+    const [outlineBorder,setBorder] = React.useState('')
 
     function contactSubmit(group: string){
         
@@ -49,8 +49,9 @@ export default function Join(){
                         {
                             groups.map((group,index) => {
                                 return (
-                                <div key={group.title + "--" + index} className="flex-col p-6 bg-[#ECECEC] cursor-pointer"
-                                 onClick={() => contactSubmit(group.title)}
+                                <div key={group.title + "--" + index} 
+                                     className={`flex-col p-6 bg-[#ECECEC] cursor-pointer rounded-sm `}
+                                     onClick={() => contactSubmit(group.title)}
                                 >
                                     <div>
                                         <Image 
@@ -76,6 +77,30 @@ export default function Join(){
                      
                      <div className="my-8">
                         {
+                            title === 'Individual' ? (
+                                <div >
+                                    <div className=" mx-auto  md:w-2/5">
+                                       <h2 className="font-sora text-base font-semibold mb-2">{title}</h2>
+                                   </div>
+                                     <Contact range='Individual!A2:D'/>
+                                </div>
+                            ) : title === 'Company' ? (
+                                <div >
+                                    <div className=" mx-auto  md:w-2/5">
+                                       <h2 className="font-sora text-base font-semibold mb-2">{title}</h2>
+                                   </div>
+                                     <Contact range='Company!A2:D'/>
+                                </div>
+                            ) : title === 'Organisation' ? (
+                                <div >
+                                    <div className=" mx-auto  md:w-2/5">
+                                        <h2 className="font-sora text-base font-semibold mb-2">{title}</h2>
+                                    </div>
+                                    <JoinContact />
+                                </div>
+                            ) : null
+                        }
+                        {/* {
                             title === 'Individual' || title === 'Company'  || title === 'Organisation' ? (
                                 
 
@@ -87,7 +112,9 @@ export default function Join(){
                                 </div>
                                
                             ) : null
-                        }
+                        } */}
+
+                        
                         
                      </div>
                           
