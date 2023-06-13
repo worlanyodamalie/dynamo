@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import { useForm , SubmitHandler , Controller } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import { SvgComponent } from './index';
+import { SvgComponent , ToastContent } from './index';
 import Select from 'react-select';
 
 
@@ -21,8 +21,6 @@ const options = [
     { value: 'Brand Promotion', label: 'Brand Promotion' },
     { value: 'Advertisement', label: 'Advertisement' }
   ]
-
- 
   
 
 export function JoinContact(){
@@ -47,6 +45,8 @@ export function JoinContact(){
         
       }, [formState,reset])
 
+   
+
     const nextStep = (step: number) => {
         // console.log("inside next step",step)
         // console.log("inside next step",formState)
@@ -61,12 +61,12 @@ export function JoinContact(){
         setFormStep(step-1)
     }
 
-    const notify = () => toast('Thanks for contacting us. We will get back to you soon')
+    const notify = () => toast(ToastContent)
 
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         setLoadingState(true)
-
+        
        const services =  data?.services.map((service: any) => {
             return service.value
        })
@@ -88,8 +88,6 @@ export function JoinContact(){
             },
             body: JSON.stringify(sheetData)
         })
-
-        
 
         const content = await response.json()
         

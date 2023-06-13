@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import { useForm , SubmitHandler } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-import { SvgComponent } from './index';
+import { SvgComponent , ToastContent } from './index';
 
 type Inputs = {
   name: string,
@@ -34,17 +34,12 @@ export function Contact({range}:{range: string}){
         
       }, [formState,reset])
 
-      const notify = () => toast('Thanks for contacting us. We will get back to you soon')
+      const toastMsg = range === 'Individual!A2:D' || range === 'Company!A2:D' ? <ToastContent /> : 'Thanks for contacting us. We will get back to you soon'
+
+      const notify = () => toast(toastMsg)
 
       const onSubmit: SubmitHandler<Inputs> = async (data) => {
         setLoadingState(true)
-
-        // const contact = {
-        //     name: data?.name,
-        //     phone: data?.phone,
-        //     email: data?.email,
-        //     message: data?.message
-        // }
 
         const contact = [data?.name , data?.email , data?.phone ,  data?.message ]
 
