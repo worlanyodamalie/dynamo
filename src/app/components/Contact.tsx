@@ -16,7 +16,7 @@ type Inputs = {
 
 
 
-export function Contact({range = 'Contacts!A2:D'}:{range: string}){
+export function Contact({range = 'Contacts!A2:D'}){
     const {register,handleSubmit,formState,formState: {errors , isSubmitSuccessful},reset} = useForm<Inputs>()
     
     const [loadingState,setLoadingState] = React.useState(false)
