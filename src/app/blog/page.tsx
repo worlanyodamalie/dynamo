@@ -95,7 +95,7 @@ export default async function Blog(){
             <h2 className="font-sora font-normal text-lg mb-2">Blog</h2>
             <h1 className="font-sora font-semibold text-2xl md:text-4xl mb-1">Rewarding your daily life</h1>
             <p className="font-sora font-light text-lg md:text-inherit text-center mb-2">Unlocking and creating opportunities in our digital world</p>
-            <div className="w-full lg:w-11/12 relative h-52 md:h-96 mt-8 mb-8">
+            <div className="w-full lg:w-11/12 relative h-52 md:h-[30rem] mt-8 mb-8">
                 <Link href={`/blog/${encodeURIComponent(posts[0]?.slug?.current)}`}  >
                 {
                     posts?.length > 0 && (
@@ -104,11 +104,12 @@ export default async function Blog(){
                             <Image 
                               src={urlFor(posts[0].imageUrl).url()}
                               alt="Blog banner"
-                             fill
+                              fill
+                              className="object-cover"
                             />
                             
                          </div>
-                          <div className="relative p-4 z-10 flex flex-col justify-end h-52 md:h-96">
+                          <div className="relative p-4 z-10 flex flex-col justify-end h-full">
                           <p className="font-sora font-light text-xs text-white mb-2 ">{posts[0].name} | {new Date(posts[0].publishedAt).toDateString()}</p>
                           <h1 className="font-sora font-semibold text-white text-lg ">{posts[0].title}</h1>
                           <h2 className="font-sora font-light text-white text-sm mb-1">Unlocking and creating opportunities in our digital world</h2>
@@ -131,6 +132,7 @@ export default async function Blog(){
                                    src={urlFor(imageUrl).url()}
                                    alt="blog image"
                                    fill
+                                   className="object-cover"
                                  />
                              </div>
                              <div className="flex flex-col">
