@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { SvgComponent , ToastContent } from './index';
 import Select from 'react-select';
+import {InlineWidget} from 'react-calendly'
 
 
 type Inputs = {
@@ -214,28 +215,12 @@ export function JoinContact(){
           )}
           { formStep === 2 && (
             <div>
-              {/* <div className="flex flex-col mb-5">
-                <h2 className="mb-1 font-sora text-xs  font-normal">
-                  Comments
-                </h2>
-                <input
-                  type="text"
-                  placeholder=""
-                  className="input  h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC]"
-                  {...register("messages", { required: true, minLength: 2 })}
-                />
-                {errors.messages?.type === "required" && (
-                  <span
-                    role="alert"
-                    className="mt-1 font-sora text-xs font-bold text-red-600"
-                  >
-                    Message is required
-                  </span>
-                )}
-              </div> */}
+              <div className="flex flex-col mb-5">
+                  <InlineWidget url="https://calendly.com/exploredynamo/30min" />
+              </div>
             </div>
           )}
-          <button
+          {/* <button
                   type="submit"
                   className="mt-4 flex  items-center font-sora font-normal text-sm ml-auto cursor-pointer"
                   disabled={loadingState}
@@ -255,8 +240,8 @@ export function JoinContact(){
                       <SvgComponent />
                     </div>
                   )}
-                </button>
-          {/* <div className="flex">
+                </button> */}
+          <div className="flex">
             {formStep > 1 && (
               <>
                 <button
@@ -314,7 +299,7 @@ export function JoinContact(){
                 </div>
               </button>
             )}
-          </div> */}
+          </div>
         </form>
         <ToastContainer />
       </div>
