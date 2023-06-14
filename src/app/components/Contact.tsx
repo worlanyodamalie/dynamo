@@ -16,7 +16,7 @@ type Inputs = {
 
 
 
-export function Contact({range}:{range: string}){
+export function Contact({range = 'Contacts!A2:D'}:{range: string}){
     const {register,handleSubmit,formState,formState: {errors , isSubmitSuccessful},reset} = useForm<Inputs>()
     
     const [loadingState,setLoadingState] = React.useState(false)
@@ -174,6 +174,6 @@ export function Contact({range}:{range: string}){
     );
 }
 
-Contact.defaultProps = {
-    range: 'Contacts!A2:D'
-}
+// Contact.defaultProps = {
+//     range: 'Contacts!A2:D'
+// }
