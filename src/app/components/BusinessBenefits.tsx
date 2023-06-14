@@ -31,7 +31,7 @@ const benefits = [
 
 export function BusinessBenefits(){
     return (
-        <div className="bg-[#F3F3F3] pt-10  pb-10">
+        <div className="bg-[#F3F3F3] pt-10  pb-10" id="business">
             <div className="container mx-auto  px-8">
                <p className="font-sora font-light text-base py-10 px-1 md:px-0">Any registered organization that has a service that can be delivered digitally or is interested in increasing their retail reach can sign up to the platform. Dyanmo provides a robust and secure environment to connect your services to new and existing customers.</p>
                <p className="font-sora font-bold text-2xl py-6">What are the benefit to your business</p>

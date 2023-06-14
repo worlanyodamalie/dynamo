@@ -62,6 +62,15 @@ export function NavBar ()  {
        window.location.reload()
     }
     
+    const handleClickScroll = (type: string) => {
+        const element = document.getElementById(type)
+
+        if(element){
+            element.scrollIntoView({behavior: 'smooth'})
+        }
+
+    }
+
    return (
     <div>
         <div className="navbar flex-wrap">
@@ -78,14 +87,14 @@ export function NavBar ()  {
             <div className="md:flex-none">
                 <ul className="menu menu-horizontal px-1">
                     <li>
-                        <Link className="" href="/">
+                        <a  onClick={event => handleClickScroll('personal')}>
                             <h3 className="font-sora text-sm font-medium">Personal</h3>
-                        </Link>
+                        </a>
                     </li>
                     <li>
-                        <Link href="/">
+                        <a  onClick={event => handleClickScroll('business')}>
                             <h3 className="font-sora text-sm font-medium">Business</h3>
-                        </Link>
+                        </a>
                     </li>
                     <li>
                         <button className="btn btn-outline font-sora text-sm font-medium normal-case" onClick={() => router.push('/join')}>Join us</button>
