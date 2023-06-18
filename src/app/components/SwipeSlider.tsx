@@ -19,7 +19,7 @@ import React from "react"
 
   interface SwipeDataType {
     data: {img: string , title: string ,description: string}[],
-    settings: { margin: string , width: string , bg: string }
+    settings: { margin: string , width: string , bg: string , height: string }
   }
 
 export function SwipeSlider({data,settings}:SwipeDataType ){
@@ -29,16 +29,16 @@ export function SwipeSlider({data,settings}:SwipeDataType ){
             {
                   data.map((item,index) => {
                     return (
-                        <div key={item.title + "__" + index} className={`carousel-item flex-col p-6 ${settings?.width} ${settings?.bg}`}>
+                        <div key={item.title + "__" + index} className={`carousel-item flex-col p-6 ${settings?.width} ${settings?.bg} ${settings.height}`}>
                             <div>
                               <Image 
                                 src={item.img}
                                 alt={item.title}
-                                width={350}
-                                height={280}
+                                width={250}
+                                height={250}
                                 className="mx-auto"
                                 style={{
-                                   'aspectRatio': '4/3',
+                                   'aspectRatio': '1/1',
                                    'objectFit': 'fill',
                                     // 'width': '100%',
                                 }}

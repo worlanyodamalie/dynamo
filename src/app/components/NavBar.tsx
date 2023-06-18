@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import {useRouter} from 'next/navigation'
 import { getCookie,hasCookie,setCookie , CookieValueTypes } from 'cookies-next'
+import { handleClickScroll } from "../utilities";
 
 export function NavBar ()  {
   
@@ -62,14 +63,7 @@ export function NavBar ()  {
        window.location.reload()
     }
     
-    const handleClickScroll = (type: string) => {
-        const element = document.getElementById(type)
-
-        if(element){
-            element.scrollIntoView({behavior: 'smooth'})
-        }
-
-    }
+    
 
    return (
     <div>

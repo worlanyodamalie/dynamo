@@ -1,6 +1,9 @@
+'use client'
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { handleClickScroll } from "../utilities";
+
 
 const socials = [
     {
@@ -23,14 +26,14 @@ export function Footer(){
              <div className="flex justify-end mb-6 border-b-[0.7px] border-[#C9C9C9]">
                 <ul className="menu menu-horizontal px-1">
                     <li>
-                        <Link className="" href="/">
+                        <a onClick={event => handleClickScroll('personal')}>
                             <h3 className="font-sora text-sm font-light">Personal</h3>
-                        </Link>
+                        </a>
                     </li>
                     <li>
-                        <Link href="/">
+                        <a onClick={event => handleClickScroll('business')}>
                             <h3 className="font-sora text-sm font-light">Business</h3>
-                        </Link>
+                        </a>
                     </li>
                     <li>
                         <Link href="/blog">

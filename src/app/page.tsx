@@ -21,24 +21,20 @@ const benefits = [
   },
   {
       img: '/youthful-modern.svg',
-      title: 'Youthful and modern',
-      description: 'Digitized transactions and engagements'
+      title: 'Artificial Intelligence',
+      description: 'Artificial Intelligence(AI) based training and monitoring to enhance user experience'
   },
   {
       img: 'nexus.svg',
-      title: 'Nexus',
-      description: 'Bringing all your digital transactions in one place'
+      title: 'Marketing opportunities',
+      description: 'Promoting services to others for a commision'
   },
   {
       img: '/youthful-modern.svg',
-      title: 'Youthful and modern',
-      description: 'Digitized transactions and engagements'
+      title: 'One-stop service',
+      description: 'One-stop service aggregation providing convenience'
   },
-  {
-      img: 'nexus.svg',
-      title: 'Nexus',
-      description: 'Bringing all your digital transactions in one place'
-  },
+  
 
 ]
 
@@ -95,8 +91,12 @@ export default function Home() {
             settings={{
               // margin: "ml-[2rem] md:ml-[4rem]",
               margin: "",
-              width: "w-1/2  md:w-1/5",
+              // width: "w-1/2  md:w-1/5",
+              // height: "h-1/2 md:h-1/5",
+              width: "md:w-96 w-4/5",
+              height: "md:h-96 h-4/5",
               bg: "bg-[#F3F3F3]",
+              
             }}
         />
         </div>

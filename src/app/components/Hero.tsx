@@ -26,8 +26,8 @@ export function Hero(){
           <Image src="/mobile.gif" width={450} height={300} alt="Hero Image"  />
         </div>
         <div>
-            <h2 className="font-sora font-bold  text-3xl  lg:text-6xl break-words mb-2 max-w-xl">Rewarding your daily life</h2>
-            <h6 className="font-sora font-normal text-base mb-6">Unlocking and creating opportunities in our digital world</h6>
+            <h2 className="font-sora font-bold  text-4xl md:text-5xl  lg:text-7xl break-words mb-2 max-w-2xl">Rewarding your daily life</h2>
+            <h6 className="font-sora font-normal text-xl mb-6">Unlocking and creating opportunities in our digital world</h6>
             <div className="flex flex-row items-center gap-6">
             {
                     data.map((item,index) => {

@@ -24,3 +24,12 @@ export function formatDate(date: { getFullYear: () => any; getMonth: () => numbe
       padTo2Digits(date.getDate()),
     ].join('-');
   }
+
+ export const handleClickScroll = (type: string) => {
+  const element = document.getElementById(type)
+
+  if(element){
+      element.scrollIntoView({behavior: 'smooth'})
+  }
+
+} 
