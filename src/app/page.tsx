@@ -20,17 +20,17 @@ const benefits = [
       description: 'Bringing all your digital transactions in one place'
   },
   {
-      img: '/youthful-modern.svg',
+      img: '/artificial-intelligence.svg',
       title: 'Artificial Intelligence',
       description: 'Artificial Intelligence(AI) based training and monitoring to enhance user experience'
   },
   {
-      img: 'nexus.svg',
+      img: 'marketing-opportunities.svg',
       title: 'Marketing opportunities',
       description: 'Promoting services to others for a commision'
   },
   {
-      img: '/youthful-modern.svg',
+      img: '/one-stop-service.svg',
       title: 'One-stop service',
       description: 'One-stop service aggregation providing convenience'
   },

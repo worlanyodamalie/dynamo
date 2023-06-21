@@ -21,17 +21,17 @@ const benefits = [
         description: 'Expand service reach and client segments'
     },
     {
-        img: 'yield-oriented.svg',
+        img: 'accesible.svg',
         title: 'Accessible & Simple',
         description: 'No upfront fee required to connect to Dynamo with increased distribution and marketing channels'
     },
     {
-        img: 'data-analytics.svg',
+        img: 'modular.svg',
         title: 'Modular',
         description: 'Service set up allows flexibility for business to determine who (profile and experience) can promote services'
     },
     {
-        img: 'yield-oriented.svg',
+        img: 'operational-enhancement.svg',
         title: 'Operational Enhancement',
         description: 'Every user of Dynamo has the potential to access and/or promote a service if the user meets established requirements'
     },

@@ -76,17 +76,17 @@ export function Footer(){
                     <div>
                     <ul className="menu menu-horizontal px-1">
                         <li>
-                            <Link className="" href="/">
+                            <Link className="" href="#">
                                 <h3 className="font-sora text-sm font-light">Terms of use</h3>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/">
+                            <Link href="#">
                                 <h3 className="font-sora text-sm font-light">Privacy Policy</h3>
                             </Link>
                         </li>
                         <li>
-                            <Link href="/">
+                            <Link href="#">
                                 <h3 className="font-sora text-sm font-light">License</h3>
                             </Link>
                         </li>
