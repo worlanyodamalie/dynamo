@@ -1,6 +1,7 @@
 'use client'
 import Image from "next/image";
-import React from "react"
+import React, {useRef,useState,useLayoutEffect} from "react"
+import {motion , useTransform , useScroll , useSpring,useInView , useMotionValue} from 'framer-motion'
 // import Slider from "react-slick"
 
 // const settings = {
@@ -23,9 +24,58 @@ import React from "react"
   }
 
 export function SwipeSlider({data,settings}:SwipeDataType ){
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const scrollYRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(scrollRef)
+
+  const [scrollRange,setScrollRange] = useState<number>(0)
+  
+  useLayoutEffect(() => {
+    if(scrollRef.current){
+      
+      setScrollRange(scrollRef.current.scrollWidth/3)
+    }
+     
+  },[scrollRange])
+
+  const {scrollYProgress} = useScroll({
+    target: scrollYRef,
+    // offset: ["start","end"]
+  })
+
+  const scrollY = useMotionValue(0)
+
+  const transform = useTransform(isInView ? scrollY : scrollYProgress,[0,0.9],[1,-scrollRange])
+  
+  
+
+
+  const spring = useSpring(transform,{
+    velocity: -300,
+    damping: 100,
+    stiffness: 350,
+  })
+
+  
+
     return (
-        <div className="pb-10 ">
-            <div className={`carousel flex-row gap-3  ${settings?.margin} ` }>
+        <div className="pb-10"
+             ref={scrollYRef}
+        >
+            <motion.div 
+               ref={scrollRef}
+               className={`carousel flex-row gap-3  ${settings?.margin} ` }
+               style={{
+                x: spring,
+                scrollBehavior: "smooth",
+                width: "100%",
+                // transform: isInView ? "translateX(0px)" : ""
+                // marginLeft: "-10rem"
+               }}
+              // viewport={{
+              //   margin: "-10"
+              // }}
+               >
             {
                   data.map((item,index) => {
                     return (
@@ -53,7 +103,7 @@ export function SwipeSlider({data,settings}:SwipeDataType ){
                     )
                 })
             }
-            </div>
+            </motion.div>
            
 
 
