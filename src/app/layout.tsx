@@ -1,6 +1,7 @@
 import './globals.css'
 import {  Sora } from 'next/font/google'
 import { NavBar , Footer } from './components/index'
+import React from 'react'
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -22,6 +23,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  
+  
   return (
     <html lang="en">
       <body className={`${sora.variable}`}>

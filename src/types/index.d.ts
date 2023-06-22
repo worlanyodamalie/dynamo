@@ -3,6 +3,7 @@ export {}
 declare global {
     interface Window {
         google: any,
-        googleTranslateElementInit: any
+        googleTranslateElementInit: any,
+        join_us: any
     }
 }

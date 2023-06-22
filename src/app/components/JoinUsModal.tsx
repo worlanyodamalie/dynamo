@@ -1,7 +1,8 @@
 "use client"
+import Modal from './Modal'
 import Image from "next/image";
-import React  from "react";
-import { Contact , JoinContact } from "../components";
+import { Contact , JoinContact , CompanyContact } from "../components";
+import React from "react"
 
 const groups = [
     {
@@ -20,11 +21,8 @@ const groups = [
 ]
 
 
-
-
-export default function Join(){
-   
-    // const { status , setStatus } = useState(false)
+export function JoinModal({isOpen,onClose}: {isOpen: boolean , onClose: () => void}){
+    
     const [title, setTitle] = React.useState('')
     const [outlineBorder,setBorder] = React.useState('')
 
@@ -42,9 +40,10 @@ export default function Join(){
         }
    }
 
+
     return (
-       
-                <div className="w-10/12 mx-auto rounded-sm mt-10 mb-6 p-8 bg-[#F4F4F4]">
+        <Modal isOpen={isOpen} onClose={onClose}>
+              <div className="w-11/12 overflow-y-auto max-h-[50rem] mx-auto rounded-sm mt-10 mb-6 md:p-8 bg-[#F4F4F4]">
                      <div className="flex md:flex-nowrap flex-wrap gap-3 flex-row justify-center">
                         {
                             groups.map((group,index) => {
@@ -52,6 +51,9 @@ export default function Join(){
                                 <div key={group.title + "--" + index} 
                                      className={`flex-col p-6 bg-[#ECECEC] cursor-pointer rounded-sm `}
                                      onClick={() => contactSubmit(group.title)}
+                                     style={{
+                                        border: title === group.title ? "1px solid #A8A8A8" : ""
+                                     }}
                                 >
                                     <div>
                                         <Image 
@@ -87,9 +89,10 @@ export default function Join(){
                             ) : title === 'Company' ? (
                                 <div >
                                     <div className=" mx-auto  md:w-2/5">
-                                       <h2 className="font-sora text-base font-semibold mb-2">{title}</h2>
+                                       <h2 className="font-sora text-base font-semibold mb-3">{title}</h2>
+                                       <h3 className='font-sora text-sm font-normal mb-6'>Submit your Business Contact for a Free Brochure on how partnering With Dynamo can boost your sales </h3>
                                    </div>
-                                     <Contact range='Company!A2:D'/>
+                                     <CompanyContact range='Company!A2:D'/>
                                 </div>
                             ) : title === 'Organisation' ? (
                                 <div >
@@ -119,6 +122,6 @@ export default function Join(){
                      </div>
                           
                 </div>
-       
+        </Modal>
     )
 }

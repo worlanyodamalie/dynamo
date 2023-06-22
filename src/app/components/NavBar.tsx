@@ -5,6 +5,7 @@ import React from "react";
 import {useRouter} from 'next/navigation'
 import { getCookie,hasCookie,setCookie , CookieValueTypes } from 'cookies-next'
 import { handleClickScroll } from "../utilities";
+import { JoinModal } from "./index";
 
 export function NavBar ()  {
   
@@ -63,7 +64,16 @@ export function NavBar ()  {
        window.location.reload()
     }
     
-    
+    const [isOpen,setIsOpen] = React.useState(false)
+
+    const handleOpenModal = () => {
+        setIsOpen(true)
+    }
+  
+    const handleCloseModal = () => {
+        setIsOpen(false)
+    }
+  
 
    return (
     <div>
@@ -91,7 +101,7 @@ export function NavBar ()  {
                         </a>
                     </li>
                     <li>
-                        <button className="btn btn-outline font-sora text-sm font-medium normal-case" onClick={() => router.push('/join')}>Join us</button>
+                        <button className="btn btn-outline font-sora text-sm font-medium normal-case" onClick={() => handleOpenModal()}>Join us</button>
                     </li>
                     <li tabIndex={0}>
                         <a className="font-sora text-sm font-medium notranslate">{selectedTitle}</a>
@@ -110,6 +120,7 @@ export function NavBar ()  {
             </div>
         </div>
         <div id="google_translate_element" style={{width:'0px',height:'0px',position:'absolute',left:'50%',zIndex:-99999}}></div>
+        <JoinModal isOpen={isOpen} onClose={handleCloseModal} />
     </div>
    )
 }

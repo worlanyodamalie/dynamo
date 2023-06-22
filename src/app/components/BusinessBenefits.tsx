@@ -1,7 +1,9 @@
-import Link from "next/link";
+"use client"
 import Image from "next/image";
 import React from "react";
 import { SwipeSlider } from "./index";
+import { JoinModal } from "./index";
+
 
 
 const benefits = [
@@ -40,6 +42,15 @@ const benefits = [
   ]
 
 export function BusinessBenefits(){
+    const [isOpen,setIsOpen] = React.useState(false)
+
+    const handleOpenModal = () => {
+        setIsOpen(true)
+    }
+  
+    const handleCloseModal = () => {
+        setIsOpen(false)
+    }
     return (
         <div className="bg-[#F3F3F3] pt-10  pb-10" id="business">
             <div className="container mx-auto  px-8">
@@ -47,7 +58,7 @@ export function BusinessBenefits(){
                <p className="font-sora font-bold text-2xl py-6">What are the benefit to your business</p>
                <SwipeSlider data={benefits} settings={{ margin: "" , width: "w-9/12 md:w-1/4" , bg: 'bg-[#EAE9E9]' , height: '' }}/>
                <div className="mt-10">
-                 <Link className="flex flex-row gap-2 items-center font-sora font-semibold text-xl align-top" href="/join">
+                 <a className="flex flex-row gap-2 items-center font-sora font-semibold text-xl align-top cursor-pointer" onClick={() => handleOpenModal()}>
                     Partner with us 
                       <div >
                         <Image 
@@ -58,11 +69,12 @@ export function BusinessBenefits(){
                         />
                       </div>
                      
-                 </Link>
+                 </a>
             </div>
             </div>
             
-            
+            <JoinModal isOpen={isOpen} onClose={handleCloseModal} />
+
         </div>
     )
 }

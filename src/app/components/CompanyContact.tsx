@@ -8,15 +8,15 @@ import { SvgComponent , ToastContent } from './index';
 
 type Inputs = {
   name: string,
-  email: string,
+//   email: string,
   phone: string,
-  message: string
+//   message: string
 }
 
 
 
 
-export function Contact({range = 'Contacts!A2:D'}){
+export function CompanyContact({range = 'Company!A2:D'}){
     const {register,handleSubmit,formState,formState: {errors , isSubmitSuccessful},reset} = useForm<Inputs>()
     
     const [loadingState,setLoadingState] = React.useState(false)
@@ -27,21 +27,21 @@ export function Contact({range = 'Contacts!A2:D'}){
             reset({
                 name: '',
                 phone: '',
-                email: '',
-                message: ''
+                // email: '',
+                // message: ''
             })
          }
         
       }, [formState,reset])
 
-      const toastMsg = range === 'Individual!A2:D'  ? <ToastContent /> : 'Thanks for contacting us. We will get back to you soon'
+      const toastMsg =  range === 'Company!A2:D' ? <ToastContent /> : 'Thanks for contacting us. We will get back to you soon'
 
       const notify = () => toast(toastMsg)
 
       const onSubmit: SubmitHandler<Inputs> = async (data) => {
         setLoadingState(true)
 
-        const contact = [data?.name , data?.email , data?.phone ,  data?.message ]
+        const contact = [data?.name ,  data?.phone  ]
 
         const sheetData = {
             range: range,
@@ -81,7 +81,7 @@ export function Contact({range = 'Contacts!A2:D'}){
           className="flex flex-col md:mx-auto  md:w-2/5"
         >
           <div className="flex flex-col mb-5">
-            <h2 className="mb-1 font-sora text-xs  font-normal">Name</h2>
+            <h2 className="mb-1 font-sora text-xs  font-normal">Business Name</h2>
             <input
               type="text"
               placeholder=""
@@ -93,11 +93,11 @@ export function Contact({range = 'Contacts!A2:D'}){
                 role="alert"
                 className="mt-1 font-sora text-xs font-bold text-red-600"
               >
-                A name is required
+                A business name is required
               </span>
             )}
           </div>
-          <div className="flex flex-col mb-5">
+          {/* <div className="flex flex-col mb-5">
             <h2 className="mb-1 font-sora text-xs  font-normal">Email</h2>
             <input
               type="text"
@@ -113,9 +113,9 @@ export function Contact({range = 'Contacts!A2:D'}){
                 {errors.email?.message}
               </span>
             )}
-          </div>
+          </div> */}
           <div className="flex flex-col mb-5">
-            <h2 className="mb-1 font-sora text-xs  font-normal">Phone</h2>
+            <h2 className="mb-1 font-sora text-xs  font-normal">Business Phone number</h2>
             <input
               type="text"
               placeholder=""
@@ -131,7 +131,7 @@ export function Contact({range = 'Contacts!A2:D'}){
               </span>
             )}
           </div>
-          <div className="flex flex-col mb-5">
+          {/* <div className="flex flex-col mb-5">
             <h2 className="mb-1 font-sora text-xs  font-normal">Message</h2>
             <input
               type="text"
@@ -147,14 +147,14 @@ export function Contact({range = 'Contacts!A2:D'}){
                 Message is required
               </span>
             )}
-          </div>
+          </div> */}
           <button
             type="submit"
             className="mt-4 flex  items-center font-sora font-normal text-sm ml-auto cursor-pointer"
            disabled={loadingState}
           >        
 
-            <span>Send</span>
+            <span>Submit</span>
             {loadingState === false && (
               <Image
                 src="send-button.svg"
@@ -174,6 +174,3 @@ export function Contact({range = 'Contacts!A2:D'}){
     );
 }
 
-// Contact.defaultProps = {
-//     range: 'Contacts!A2:D'
-// }
