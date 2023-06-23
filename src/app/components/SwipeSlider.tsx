@@ -34,7 +34,7 @@ export function SwipeSlider({data,settings}:SwipeDataType ){
   useLayoutEffect(() => {
     if(scrollRef.current){
       
-      setScrollRange(scrollRef.current.scrollWidth/2)
+      setScrollRange(scrollRef.current.scrollWidth/3)
     }
 
      
@@ -47,13 +47,14 @@ export function SwipeSlider({data,settings}:SwipeDataType ){
 
   const scrollY = useMotionValue(0)
 
-  const transform = useTransform(scrollYProgress,[0,0.9],[1,-scrollRange])
+  const transform = useTransform(scrollYProgress,[0,0.9],[1,scrollRange])
   
   
-
+//  console.log("scrollRange",scrollRange)
 
   const spring = useSpring(transform,{
-    velocity: 2500,
+    velocity: -0.9000000000000002,
+    // velocity: 2000,
     damping: 100,
     stiffness: 350,
   })
@@ -65,12 +66,10 @@ export function SwipeSlider({data,settings}:SwipeDataType ){
         >
             <motion.div 
                ref={scrollRef}
-               className={`carousel flex-row gap-3  ${settings?.margin} ` }
+               className={`carousel gap-3  ${settings?.margin} ` }
                style={{
                 x: spring,
                 scrollBehavior: "smooth",
-                width: "100%",
-               
                }}
                whileInView={{ transform: "translateX(-1px)" }}
               
