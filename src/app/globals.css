@@ -25,6 +25,7 @@ body {
   /* color: rgb(var(--foreground-rgb)); */
   color: #000000;
   background: var(--background-body);
+  /* overflow-x: clip; */
   /* background: linear-gradient(
       to bottom,
       transparent,

@@ -154,7 +154,7 @@ export function Contact({range = 'Contacts!A2:D'}){
            disabled={loadingState}
           >        
 
-            <span>Send</span>
+            <span>Submit</span>
             {loadingState === false && (
               <Image
                 src="send-button.svg"

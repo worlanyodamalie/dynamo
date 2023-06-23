@@ -27,7 +27,7 @@ export default function RootLayout({
   
   return (
     <html lang="en">
-      <body className={`${sora.variable}`}>
+      <body className={`${sora.variable}`} >
         <main className="flex min-h-screen flex-col ">
             <div className='container mx-auto pt-4 md:px-8 px-4'><NavBar /></div>
             {children}
