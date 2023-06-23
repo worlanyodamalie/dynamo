@@ -154,8 +154,8 @@ export default function Home() {
           <h2 className="font-sora text-2xl font-bold mb-10  text-center">
             Contact Us
           </h2>
-        </div>
-        <Contact />
+          <Contact />
+        </div> 
       </div>
       
       

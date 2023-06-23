@@ -85,7 +85,7 @@ export function CompanyContact({range = 'Company!A2:D'}){
             <input
               type="text"
               placeholder=""
-              className="input  h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC] focus:outline-none"
+              className="input px-0 h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC] focus:outline-none"
               {...register("name", { required: true, minLength: 2 })}
             />
             {errors.name?.type === "required" && (
@@ -102,7 +102,7 @@ export function CompanyContact({range = 'Company!A2:D'}){
             <input
               type="text"
               placeholder=""
-              className="input  h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC] focus:outline-none"
+              className="input px-0 h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC] focus:outline-none"
               {...register("email", { required: "Email Address is required" })}
             />
             {errors.email && (
@@ -119,7 +119,7 @@ export function CompanyContact({range = 'Company!A2:D'}){
             <input
               type="text"
               placeholder=""
-              className="input  h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC] focus:outline-none"
+              className="input px-0  h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC] focus:outline-none"
               {...register("phone", { required: true })}
             />
             {errors.phone?.type === "required" && (

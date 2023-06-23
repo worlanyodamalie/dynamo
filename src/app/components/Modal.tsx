@@ -39,8 +39,8 @@ const Modal = ({ isOpen, onClose, children }: {isOpen: boolean , onClose: () => 
                 onClick={onClose}
               >
                 <svg
-                  width="9"
-                  height="9"
+                  width="17"
+                  height="17"
                   viewBox="0 0 9 9"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"

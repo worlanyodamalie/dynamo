@@ -8,15 +8,19 @@ import { handleClickScroll } from "../utilities";
 const socials = [
     {
         img: "facebook.svg",
+        link: "#"
     },
     {
         img: "twitter.svg",
+        link: "https://twitter.com/ExploreDynamo"
     },
     {
         img: "instagram.svg",
+        link: "https://www.instagram.com/explore_dynamo/"
     },
     {
         img: "linkedin.svg",
+        link: "https://www.linkedin.com/company/dynamosct/"
     },
 ]
 
@@ -48,7 +52,7 @@ export function Footer(){
                 {
                     socials.map((social,index) => {
                        return (
-                        <Link key={"socials--" + index} href="/" className="px-2">
+                        <Link key={"socials--" + index} href={social.link} target="_blank" className="px-2">
                             <Image 
                                 src={social.img}
                                 alt="Social media icon"
