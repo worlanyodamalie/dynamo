@@ -67,11 +67,11 @@ export function SwipeSlider({data,settings}:SwipeDataType ){
             <motion.div 
                ref={scrollRef}
                className={`carousel gap-3  ${settings?.margin} ` }
-               style={{
-                x: spring,
-                scrollBehavior: "smooth",
-               }}
-               whileInView={{ transform: "translateX(-1px)" }}
+              //  style={{
+              //   x: spring,
+              //   scrollBehavior: "smooth",
+              //  }}
+               //whileInView={{ transform: "translateX(-1px)" }}
               
                >
             {

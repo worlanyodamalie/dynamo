@@ -101,8 +101,9 @@ export default function Home() {
     <div>
       <div className="container mx-auto pt-4  px-4">
         <Hero />
-        <ContentSection />
-        <div className='px-4 py-8' id="personal">
+        <ContentSection />  
+      </div>
+      <div className='container mx-auto pl-4 py-8' id="personal">
           <h2 className="font-sora md:text-3xl text-2xl font-bold  pb-8">What are the benefits you enjoy</h2>
           <SwipeSlider
             data={benefits}
@@ -118,8 +119,6 @@ export default function Home() {
             }}
         />
         </div>
-        
-      </div>
       
       
       
