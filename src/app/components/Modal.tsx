@@ -33,7 +33,9 @@ const Modal = ({ isOpen, onClose, children }: {isOpen: boolean , onClose: () => 
             aria-modal="true"
             aria-labelledby="modal-title"
           >
-            <div className="flex justify-end p-4 mt-8 md:mt-0">
+            
+            <div className="p-4">
+            <div className="flex justify-end p-4 mt-6 md:mt-0">
               <button
                 className="text-gray-500 hover:text-gray-700 focus:outline-none"
                 onClick={onClose}
@@ -52,7 +54,8 @@ const Modal = ({ isOpen, onClose, children }: {isOpen: boolean , onClose: () => 
                 </svg>
               </button>
             </div>
-            <div className="p-4">{children}</div>
+              {children}
+            </div>
           </div>
         </div>
       )}
