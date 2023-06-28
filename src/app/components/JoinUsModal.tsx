@@ -81,14 +81,14 @@ export function JoinModal({isOpen,onClose}: {isOpen: boolean , onClose: () => vo
                         {
                             title === 'Individual' ? (
                                 <div >
-                                    <div className=" mx-auto  md:w-2/5">
+                                    <div className=" mx-auto lg:w-2/5 md:w-3/5">
                                        <h2 className="font-sora text-base font-semibold mb-2">{title}</h2>
                                    </div>
                                      <Contact range='Individual!A2:D'/>
                                 </div>
                             ) : title === 'Company' ? (
                                 <div >
-                                    <div className=" mx-auto  md:w-2/5">
+                                    <div className=" mx-auto  lg:w-2/5 md:w-3/5">
                                        <h2 className="font-sora text-base font-semibold mb-3">{title}</h2>
                                        <h3 className='font-sora text-sm font-normal mb-6'>Submit your Business Contact for a Free Brochure on how partnering With Dynamo can boost your sales </h3>
                                    </div>
@@ -96,7 +96,7 @@ export function JoinModal({isOpen,onClose}: {isOpen: boolean , onClose: () => vo
                                 </div>
                             ) : title === 'Organisation' ? (
                                 <div >
-                                    <div className=" mx-auto  md:w-2/5">
+                                    <div className=" mx-auto  lg:w-2/5 md:w-3/5">
                                         <h2 className="font-sora text-base font-semibold mb-2">{title}</h2>
                                     </div>
                                     <JoinContact />

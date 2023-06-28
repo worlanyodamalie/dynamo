@@ -78,7 +78,7 @@ export function CompanyContact({range = 'Company!A2:D'}){
       
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col md:mx-auto  md:w-2/5"
+          className="flex flex-col md:mx-auto  lg:w-2/5 md:w-3/5"
         >
           <div className="flex flex-col mb-5">
             <h2 className="mb-1 font-sora text-xs  font-normal">Business Name</h2>

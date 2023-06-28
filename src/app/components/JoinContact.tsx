@@ -106,7 +106,7 @@ export function JoinContact(){
       <div className="container mx-auto ">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col md:mx-auto  md:w-2/5"
+          className="flex flex-col md:mx-auto  lg:w-2/5 md:w-3/5"
         >
           {formStep == 1 && (
             <div>
