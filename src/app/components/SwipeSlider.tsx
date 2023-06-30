@@ -54,33 +54,7 @@ export function SwipeSlider({id,title,data,settings}:SwipeDataType ){
       }
     })
       
-      // boxes.forEach((box: any , i) => {
-      //     let carouselItem = box.querySelector('.carousel-section')
-      //     let pinWrap = box.querySelector('.pin-wrap')
-      //     let getToValue = () => -(carouselItem.scrollWidth - window.innerWidth)
-
-      //     gsap.fromTo(carouselItem,{
-      //       x: 0
-      //       },{
-      //        x: getToValue(),
-      //        ease: "none",
-      //        scrollTrigger: {
-      //          trigger: box,
-      //          start: "top top",
-      //          end: () => "+-" + (scrollRange - window.innerWidth),
-      //          pin: pinWrap,
-      //          invalidateOnRefresh: true,
-      //          scrub: true,
-      //          markers: true
-      //        }  
-
-      //       },
-            
-      //       )
-      // })
-
       
-
     },scrollRef)
     return () => ctx.revert();
   },[])
@@ -88,10 +62,10 @@ export function SwipeSlider({id,title,data,settings}:SwipeDataType ){
  
     return (
         <div className="pb-10 carousel-wrapper " 
-             style={{
-              height: "100%",
-              overscrollBehavior: "none",
-             }}
+            //  style={{
+            //   height: "100%",
+            //   overscrollBehavior: "none",
+            //  }}
              ref={scrollRef}
              >
              <div className={`carousel-section flex flex-col gap-3  ${settings?.margin} ` } id={id}>

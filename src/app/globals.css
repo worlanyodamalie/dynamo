@@ -31,8 +31,8 @@ body {
   position: relative;
 
   /* GSAP influenced properties */
-  overscroll-behavior: none;
-  height: 100vh;
+  /* overscroll-behavior: none;
+  height: 100vh; */
 
 }
 
