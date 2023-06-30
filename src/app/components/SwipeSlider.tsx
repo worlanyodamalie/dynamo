@@ -7,7 +7,6 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 interface SwipeDataType {
     title: string,
-    id: string,
     data: {img: string , title: string ,description: string,bgImage: string,bgSize: string}[],
     settings: { margin: string , width: string , bg: string , height: string }
   }
@@ -15,7 +14,7 @@ interface SwipeDataType {
 gsap.registerPlugin(ScrollTrigger);
 
 
-export function SwipeSlider({id,title,data,settings}:SwipeDataType ){
+export function SwipeSlider({title,data,settings}:SwipeDataType ){
   const scrollRef = useRef<HTMLDivElement>(null)
   const scrollYRef = useRef<HTMLDivElement>(null)
 
@@ -68,7 +67,7 @@ export function SwipeSlider({id,title,data,settings}:SwipeDataType ){
             //  }}
              ref={scrollRef}
              >
-             <div className={`carousel-section flex flex-col gap-3  ${settings?.margin} ` } id={id}>
+             <div className={`carousel-section flex flex-col gap-3  ${settings?.margin} ` } >
                <h2 className="font-sora md:text-3xl text-2xl font-bold pt-5 pb-8">{title}</h2>
               <div className="flex gap-3">
               {

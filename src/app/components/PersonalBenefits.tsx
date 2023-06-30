@@ -57,9 +57,9 @@ const benefits = [
 
 export function PersonalBenefits(){
     return (
-     <div className='container mx-auto pl-4 py-8' >
+     <div className='container mx-auto pl-4 py-8'  id={"personal"}>
         <SwipeSlider
-          id={"personal"}
+         
           data={benefits}
           title={'What are the benefits you enjoy'}
           settings={{
