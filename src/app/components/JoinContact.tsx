@@ -112,7 +112,7 @@ export function JoinContact(){
             <div>
               <div className="flex flex-col mb-5">
                 <h2 className="mb-1 font-sora text-xs  font-normal">
-                  Business Name
+                  Organisation Name
                 </h2>
                 <input
                   type="text"
@@ -131,7 +131,7 @@ export function JoinContact(){
               </div>
               <div className="flex flex-col mb-5">
                 <h2 className="mb-1 font-sora text-xs  font-normal">
-                  Business Email
+                  Organisation Email
                 </h2>
                 <input
                   type="text"
@@ -152,7 +152,7 @@ export function JoinContact(){
               </div>
               <div className="flex flex-col mb-5">
                 <h2 className="mb-1 font-sora text-xs  font-normal">
-                  Business Phone
+                  Organisation Phone
                 </h2>
                 <input
                   type="text"

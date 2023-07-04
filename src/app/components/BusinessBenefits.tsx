@@ -68,7 +68,7 @@ export function BusinessBenefits(){
             <div className="container mx-auto  px-8">
                <p className="font-sora font-light text-base py-10 px-1 md:px-0">Any registered organization that has a service that can be delivered digitally or is interested in increasing their retail reach can sign up to the platform. Dyanmo provides a robust and secure environment to connect your services to new and existing customers.</p>
                {/* <p className="font-sora font-bold text-2xl py-6">What are the benefit to your business</p> */}
-               <SwipeSlider  title={"What are the benefit to your business"} data={benefits} settings={{ margin: "" , width: "md:w-96 w-4/5" , bg: 'bg-[#EAE9E9]' , height: "md:h-96 h-4/5" }}/>
+               <SwipeSlider  title={"What are the benefits to your business"} data={benefits} settings={{ margin: "" , width: "md:w-96 w-4/5" , bg: 'bg-[#EAE9E9]' , height: "md:h-96 h-4/5" }}/>
                <div className="mt-10">
                  <a className="flex flex-row gap-2 items-center font-sora font-semibold text-xl align-top cursor-pointer" onClick={() => handleOpenModal()}>
                     Partner with us 
