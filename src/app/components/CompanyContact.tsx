@@ -1,10 +1,12 @@
 "use client"
 import Image from 'next/image'
 import React, { useEffect } from 'react'
-import { useForm , SubmitHandler } from 'react-hook-form'
+import { useForm , SubmitHandler , Controller } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { SvgComponent , ToastContent } from './index';
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css'
 
 type Inputs = {
   name: string,
@@ -17,7 +19,7 @@ type Inputs = {
 
 
 export function CompanyContact({range = 'Company!A2:D'}){
-    const {register,handleSubmit,formState,formState: {errors , isSubmitSuccessful},reset} = useForm<Inputs>()
+    const {register,handleSubmit,formState,formState: {errors , isSubmitSuccessful},reset,control} = useForm<Inputs>()
     
     const [loadingState,setLoadingState] = React.useState(false)
 
@@ -34,7 +36,10 @@ export function CompanyContact({range = 'Company!A2:D'}){
         
       }, [formState,reset])
 
-      const toastMsg =  range === 'Company!A2:D' ? <ToastContent /> : 'Thanks for contacting us. We will get back to you soon'
+      // const toastMsg =  range === 'Company!A2:D' ? <ToastContent /> : 'Thanks for contacting us. We will get back to you soon'
+      
+      const toastMsg = 'Thanks for contacting us. We will get back to you soon' 
+
 
       const notify = () => toast(toastMsg)
 
@@ -114,9 +119,51 @@ export function CompanyContact({range = 'Company!A2:D'}){
               </span>
             )}
           </div> */}
-          <div className="flex flex-col mb-5">
+          <div className="flex flex-col mb-5 company--contact">
             <h2 className="mb-1 font-sora text-xs  font-normal">Business Phone number</h2>
-            <input
+            <Controller
+                control={control}
+                name="phone"
+                rules={{
+                  required: 'A phone number is required',
+                  //validate: (value) => isPossiblePhoneNumber(value) || 'Phone number is incorrect',
+                }}
+                render={({ field: { onChange, name } }) => (
+                  <PhoneInput
+              
+                    country={'gh'}
+                    value={name}
+                    onChange={onChange} 
+                    autoFormat={false}
+                   
+                    inputStyle={{
+                      width: "100%",
+                      borderTop: "0px",
+                      borderRight: "0px",
+                      borderLeft: "0px",
+                      borderBottom: "1px solid #acacac",
+                      color: "#000",
+                      borderRadius: "unset"
+                    }}  
+                    buttonStyle={{
+                      borderTop: "0px",
+                      borderRight: "0px",
+                      borderLeft: "0px",
+                      background: "transparent"
+                    }} 
+                                
+                  />
+                )}
+              />
+              {errors.phone && (
+                <span
+                role="alert"
+                className="mt-1 font-sora text-xs font-bold text-red-600"
+              >
+                  {errors.phone.message}
+                </span>
+              )}
+            {/* <input
               type="text"
               placeholder=""
               className="input px-0  h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC] focus:outline-none"
@@ -129,7 +176,7 @@ export function CompanyContact({range = 'Company!A2:D'}){
               >
                 A phone number is required
               </span>
-            )}
+            )} */}
           </div>
           {/* <div className="flex flex-col mb-5">
             <h2 className="mb-1 font-sora text-xs  font-normal">Message</h2>

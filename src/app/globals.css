@@ -71,6 +71,12 @@ input:-webkit-autofill:focus {
   background-color: #f4f4f4 !important;
 }
 
+.individual--contact .react-tel-input input.form-control ,
+.company--contact .react-tel-input input.form-control,
+.organisation--contact .react-tel-input input.form-control {
+  background: transparent !important;
+}
+
 
 
 /* Slick.min.css */

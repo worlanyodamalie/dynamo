@@ -1,10 +1,16 @@
 "use client"
 import Image from 'next/image'
 import React, { useEffect } from 'react'
-import { useForm , SubmitHandler } from 'react-hook-form'
+import { useForm , SubmitHandler , Controller } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { SvgComponent , ToastContent } from './index';
+
+// import 'react-phone-number-input/style.css'
+// import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input'
+import PhoneInput   from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
+// import {isValidPhoneNumber,isPossiblePhoneNumber} from "libphonenumber-js/min"
 
 type Inputs = {
   name: string,
@@ -17,9 +23,11 @@ type Inputs = {
 
 
 export function Contact({range = 'Contacts!A2:D'}){
-    const {register,handleSubmit,formState,formState: {errors , isSubmitSuccessful},reset} = useForm<Inputs>()
+    const {register,handleSubmit,formState,formState: {errors , isSubmitSuccessful},reset , control} = useForm<Inputs>()
     
     const [loadingState,setLoadingState] = React.useState(false)
+
+
 
     useEffect(() => {
         if(formState.isSubmitSuccessful)
@@ -39,7 +47,12 @@ export function Contact({range = 'Contacts!A2:D'}){
       const notify = () => toast(toastMsg)
 
       const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        // console.log("data",data)
+
+
         setLoadingState(true)
+
+       
 
         const contact = [data?.name , data?.email , data?.phone ,  data?.message ]
 
@@ -116,20 +129,62 @@ export function Contact({range = 'Contacts!A2:D'}){
           </div>
           <div className="flex flex-col mb-5">
             <h2 className="mb-1 font-sora text-xs  font-normal">Phone</h2>
-            <input
+            {/* <input
               type="text"
               placeholder=""
               className="input px-0 h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC] focus:outline-none"
               {...register("phone", { required: true })}
-            />
-            {errors.phone?.type === "required" && (
+            /> */}
+            <Controller
+                control={control}
+                name="phone"
+                rules={{
+                  required: 'A phone number is required',
+                  //validate: (value) => isPossiblePhoneNumber(value) || 'Phone number is incorrect',
+                }}
+                render={({ field: { onChange, name } }) => (
+                  <PhoneInput
+              
+                    country={'gh'}
+                    value={name}
+                    onChange={onChange} 
+                    autoFormat={false}
+                   
+                    inputStyle={{
+                      width: "100%",
+                      borderTop: "0px",
+                      borderRight: "0px",
+                      borderLeft: "0px",
+                      borderBottom: "1px solid #acacac",
+                      color: "#000",
+                      borderRadius: "unset"
+                    }}  
+                    buttonStyle={{
+                      borderTop: "0px",
+                      borderRight: "0px",
+                      borderLeft: "0px",
+                      background: "transparent"
+                    }} 
+                                
+                  />
+                )}
+              />
+              {errors.phone && (
+                <span
+                role="alert"
+                className="mt-1 font-sora text-xs font-bold text-red-600"
+              >
+                  {errors.phone.message}
+                </span>
+              )}
+            {/* {errors.phone?.type === "required" && (
               <span
                 role="alert"
                 className="mt-1 font-sora text-xs font-bold text-red-600"
               >
                 A phone number is required
               </span>
-            )}
+            )} */}
           </div>
           <div className="flex flex-col mb-5">
             <h2 className="mb-1 font-sora text-xs  font-normal">Message</h2>

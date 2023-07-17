@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { SvgComponent , ToastContent } from './index';
 import Select from 'react-select';
 import {InlineWidget} from 'react-calendly'
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css'
 
 
 type Inputs = {
@@ -150,11 +152,53 @@ export function JoinContact(){
                   </span>
                 )}
               </div>
-              <div className="flex flex-col mb-5">
+              <div className="flex flex-col mb-5 organisation--contact">
                 <h2 className="mb-1 font-sora text-xs  font-normal">
                   Organisation Phone
                 </h2>
-                <input
+                <Controller
+                control={control}
+                name="phone"
+                rules={{
+                  required: 'A phone number is required',
+                  //validate: (value) => isPossiblePhoneNumber(value) || 'Phone number is incorrect',
+                }}
+                render={({ field: { onChange, name } }) => (
+                  <PhoneInput
+              
+                    country={'gh'}
+                    value={name}
+                    onChange={onChange} 
+                    autoFormat={false}
+                   
+                    inputStyle={{
+                      width: "100%",
+                      borderTop: "0px",
+                      borderRight: "0px",
+                      borderLeft: "0px",
+                      borderBottom: "1px solid #acacac",
+                      color: "#000",
+                      borderRadius: "unset"
+                    }}  
+                    buttonStyle={{
+                      borderTop: "0px",
+                      borderRight: "0px",
+                      borderLeft: "0px",
+                      background: "transparent"
+                    }} 
+                                
+                  />
+                )}
+              />
+              {errors.phone && (
+                <span
+                role="alert"
+                className="mt-1 font-sora text-xs font-bold text-red-600"
+              >
+                  {errors.phone.message}
+                </span>
+              )}
+                {/* <input
                   type="text"
                   placeholder=""
                   className="input px-0 h-8 w-full  rounded-none border-x-0 border-y-0 border-b-[0.7px] border-[#ACACAC] focus:outline-none"
@@ -167,7 +211,7 @@ export function JoinContact(){
                   >
                     A phone number is required
                   </span>
-                )}
+                )} */}
               </div>
               <div className="flex flex-col mb-5">
                 <h2 className="mb-1 font-sora text-xs  font-normal">

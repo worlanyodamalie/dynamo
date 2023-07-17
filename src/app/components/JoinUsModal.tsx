@@ -80,7 +80,7 @@ export function JoinModal({isOpen,onClose}: {isOpen: boolean , onClose: () => vo
                      <div className="my-8">
                         {
                             title === 'Individual' ? (
-                                <div >
+                                <div className='individual--contact'>
                                     <div className=" mx-auto lg:w-2/5 md:w-3/5">
                                        <h2 className="font-sora text-base font-semibold mb-2">{title}</h2>
                                    </div>
