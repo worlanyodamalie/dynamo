@@ -58,17 +58,23 @@ export function Contact({range = 'Contacts!A2:D'}){
 
         const sheetData = {
             range: range,
-            data: contact
+            name: data?.name,
+            email: data?.email,
+            phone: data?.phone,
+            message: data?.message
+            // data: contact
         }
         
-        const response = await fetch('/api/sheet' , {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(sheetData)
-        })
+        // const response = await fetch('/api/sheet' , {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(sheetData)
+        // })
+        const response = await fetch('/api/sheet'+ '?' + new URLSearchParams(sheetData) )
+
 
         
 

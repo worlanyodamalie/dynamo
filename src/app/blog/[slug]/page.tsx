@@ -1,5 +1,6 @@
+'use client';
 import Image from "next/image";
-import { client } from "../../utilities/index";
+import { client , customLoader } from "../../utilities/index";
 import { groq } from "next-sanity";
 import imageUrlBuilder  from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
@@ -8,8 +9,16 @@ import Loading from "../loading";
 import { Suspense } from "react";
 
 
-function urlFor(source: SanityImageSource){
-    return imageUrlBuilder(client).image(source)
+function urlFor(source: string ){
+  const prefix = `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/production`
+  
+
+  const regex = new RegExp(`^${prefix}`)
+  const str =  source.replace(regex, '')
+
+  return str
+
+  // return imageUrlBuilder(client).image(source)
 }
 
 const ptComponents = {
@@ -22,9 +31,14 @@ const ptComponents = {
           <Image
             alt={value.alt || ' '}
             loading="lazy"
-            src={urlFor(value).width(320).height(240).fit('max').auto('format').url()}
+            width={320}
+            height={240}
+            src={urlFor(value)}
+
+            // src={urlFor(value).width(320).height(240).fit('max').auto('format').url()}
+            loader={customLoader}
           />
-        )
+         )
       }
     }
   }
@@ -65,10 +79,11 @@ export default async function BlogPost({ params  }: { params: { slug: string } }
                     {
                         post?.imageUrl && (
                             <Image 
-                               src={urlFor(post?.imageUrl).url()}
+                               src={urlFor(post?.imageUrl)}
                                alt="Blog banner"
                                fill
                                className="object-cover"
+                               loader={customLoader}
                          />
                         )
                     }

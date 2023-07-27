@@ -7,19 +7,19 @@ import { handleClickScroll } from "../utilities";
 
 const socials = [
     {
-        img: "facebook.svg",
+        img: "/facebook.svg",
         link: "#"
     },
     {
-        img: "twitter.svg",
+        img: "/twitter.svg",
         link: "https://twitter.com/ExploreDynamo"
     },
     {
-        img: "instagram.svg",
+        img: "/instagram.svg",
         link: "https://www.instagram.com/explore_dynamo/"
     },
     {
-        img: "linkedin.svg",
+        img: "/linkedin.svg",
         link: "https://www.linkedin.com/company/dynamosct/"
     },
 ]

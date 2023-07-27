@@ -50,17 +50,21 @@ export function CompanyContact({range = 'Company!A2:D'}){
 
         const sheetData = {
             range: range,
-            data: contact
+            name: data?.name,
+            phone: data?.phone
+            // data: contact
         }
         
-        const response = await fetch('/api/sheet' , {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(sheetData)
-        })
+        // const response = await fetch('/api/sheet' , {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(sheetData)
+        // })
+        const response = await fetch('/api/sheet'+ '?' + new URLSearchParams(sheetData) )
+
 
         
 

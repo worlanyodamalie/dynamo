@@ -1,6 +1,7 @@
+'use client';
 import Link from "next/link";
 import { groq } from "next-sanity";
-import { client } from "../utilities/index";
+import { client , customLoader } from "../utilities/index";
 import imageUrlBuilder  from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { PortableText } from "@portabletext/react";
@@ -8,14 +9,22 @@ import Image from "next/image";
 import { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
 import { Suspense } from "react";
 import Loading from "./loading";
-
+import { ImageLoaderProps } from "next/image";
 
 interface ImageProps extends Omit<React.HTMLProps<HTMLImageElement>, 'src'> {
     src: string | ImageUrlBuilder;
   }
 
-function urlFor(source: SanityImageSource){
-    return imageUrlBuilder(client).image(source)
+function urlFor(source: string ){
+  const prefix = `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/production`
+  
+
+  const regex = new RegExp(`^${prefix}`)
+  const str =  source.replace(regex, '')
+
+  return str
+
+  // return imageUrlBuilder(client).image(source)
 }
 
 const ptComponents = {
@@ -29,7 +38,12 @@ const ptComponents = {
           <Image
             alt={value.alt || ' '}
             loading="lazy"
-            src={urlFor(value).width(320).height(240).fit('max').auto('format').url()}
+            width={320}
+            height={240}
+            src={urlFor(value)}
+
+            // src={urlFor(value).width(320).height(240).fit('max').auto('format').url()}
+            loader={customLoader}
           />
          )
       }
@@ -86,6 +100,11 @@ function truncateBody(body: any){
 }
 
 
+// const customLoader = ({ src, width, quality }: ImageLoaderProps) => {
+//   return `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/production/${src}?w=${width}&q=${quality || 75}`
+// }
+
+
 export default async function Blog(){
     const posts = await getPosts();
 
@@ -102,10 +121,11 @@ export default async function Blog(){
                       <>  
                         <div className="absolute inset-0 w-full">
                             <Image 
-                              src={urlFor(posts[0].imageUrl).url()}
+                              src={urlFor(posts[0].imageUrl)}
                               alt="Blog banner"
                               fill
                               className="object-cover"
+                              loader={customLoader}
                             />
                             
                          </div>
@@ -129,10 +149,11 @@ export default async function Blog(){
                          <div className="">
                              <div className="relative h-52 md:h-60 mb-4">
                                  <Image 
-                                   src={urlFor(imageUrl).url()}
+                                   src={urlFor(imageUrl)}
                                    alt="blog image"
                                    fill
                                    className="object-cover"
+                                  loader={customLoader}
                                  />
                              </div>
                              <div className="flex flex-col">

@@ -2,11 +2,12 @@
   "name": "dynamo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://exploredynamo.com/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "start": "next start"
   },
   "dependencies": {
     "@portabletext/react": "^3.0.2",
