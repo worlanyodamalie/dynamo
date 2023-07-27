@@ -10,17 +10,17 @@ import { Suspense } from "react";
 import { useRouter } from 'next/router'
 
 
-function urlFor(source: SanityImageSource ){
-  // const prefix = `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/production`
+function urlFor(source: string ){
+  const prefix = `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/production`
   
 
-  // const regex = new RegExp(`^${prefix}`)
-  // const str =  source.replace(regex, '')
+  const regex = new RegExp(`^${prefix}`)
+  const str =  source.replace(regex, '')
 
 
-  // return str
+  return str
 
-  return imageUrlBuilder(client).image(source)
+  // return imageUrlBuilder(client).image(source)
 }
 
 const ptComponents = {
@@ -33,11 +33,11 @@ const ptComponents = {
           <Image
             alt={value.alt || ' '}
             loading="lazy"
-            // width={320}
-            // height={240}
-            // src={urlFor(value)}
-            // loader={customLoader}
-            src={urlFor(value).width(320).height(240).fit('max').auto('format').url()}
+            width={320}
+            height={240}
+            src={urlFor(value)}
+            loader={customLoader}
+            //src={urlFor(value).width(320).height(240).fit('max').auto('format').url()}
             
           />
          )
@@ -83,7 +83,7 @@ export default  function BlogPost({ post  }: any){
                     {
                         post?.imageUrl && (
                             <Image 
-                               src={urlFor(post?.imageUrl).url()}
+                               src={urlFor(post?.imageUrl)}
                                alt="Blog banner"
                                fill
                                className="object-cover"

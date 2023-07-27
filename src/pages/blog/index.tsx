@@ -14,16 +14,16 @@ interface ImageProps extends Omit<React.HTMLProps<HTMLImageElement>, 'src'> {
     src: string | ImageUrlBuilder;
   }
 
-function urlFor(source: SanityImageSource ){
-  // const prefix = `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/production`
+function urlFor(source: string ){
+  const prefix = `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/production`
   
 
-  // const regex = new RegExp(`^${prefix}`)
-  // const str =  source.replace(regex, '')
+  const regex = new RegExp(`^${prefix}`)
+  const str =  source.replace(regex, '')
 
-  // return str
+  return str
 
-  return imageUrlBuilder(client).image(source)
+  // return imageUrlBuilder(client).image(source)
 }
 
 const ptComponents = {
@@ -37,11 +37,11 @@ const ptComponents = {
           <Image
             alt={value.alt || ' '}
             loading="lazy"
-            // width={320}
-            // height={240}
-            // src={urlFor(value)}
-            //loader={customLoader}
-            src={urlFor(value).width(320).height(240).fit('max').auto('format').url()}
+            width={320}
+            height={240}
+            src={urlFor(value)}
+            loader={customLoader}
+            //src={urlFor(value).width(320).height(240).fit('max').auto('format').url()}
             
           />
          )
@@ -123,11 +123,11 @@ export default function Blog( {posts} : any){
                       <>  
                         <div className="absolute inset-0 w-full">
                             <Image 
-                              src={urlFor(posts[0].imageUrl).url()}
+                              src={urlFor(posts[0].imageUrl)}
                               alt="Blog banner"
                               fill
                               className="object-cover"
-                              // loader={customLoader}
+                              loader={customLoader}
                             />
                             
                          </div>
@@ -151,11 +151,11 @@ export default function Blog( {posts} : any){
                          <div className="">
                              <div className="relative h-52 md:h-60 mb-4">
                                  <Image 
-                                   src={urlFor(imageUrl).url()}
+                                   src={urlFor(imageUrl)}
                                    alt="blog image"
                                    fill
                                    className="object-cover"
-                                  //loader={customLoader}
+                                  loader={customLoader}
                                  />
                              </div>
                              <div className="flex flex-col">
