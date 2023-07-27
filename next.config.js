@@ -24,9 +24,9 @@ if (isGithubActions) {
 
 
 const nextConfig = {
-    assetPrefix: assetPrefix,
-    basePath: basePath,
-    images: images  
+    // assetPrefix: assetPrefix,
+    // basePath: basePath,
+    // images: images  
      
 }
 
