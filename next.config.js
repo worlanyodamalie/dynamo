@@ -15,8 +15,10 @@ const nextConfig = {
         //   },
         // ],
         loader: 'imgix',
-        loaderFile: './imgix.ts'
-        //path: "https://exploredynamo.imgix.net/"
+        loaderFile: './imgix.ts',
+        path: "https://exploredynamo.imgix.net/",
+        unoptimized: true,
+
 
       },
      
