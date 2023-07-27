@@ -27,7 +27,7 @@ export function Hero(){
                  width={450} 
                  height={300} 
                  alt="Hero Image"
-                 unoptimized={true}
+                 //unoptimized={true}
                  />
         </div>
         <div>
