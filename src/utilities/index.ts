@@ -3,7 +3,7 @@ import { ImageLoaderProps } from "next/image";
 
 
 export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  projectId: "s9y7etk0",
   dataset: "production",
   apiVersion: formatDate(new Date()),
   useCdn: false
