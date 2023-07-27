@@ -21,43 +21,9 @@ if (isGithubActions) {
 
 
 const nextConfig = {
-    //output: 'export',
-    images: images
-    // output: 'standalone',
-    //trailingSlash: true,
-    // images: {
-    //     // remotePatterns: [
-    //     //   {
-    //     //     protocol: 'https',
-    //     //     hostname: 'cdn.sanity.io',
-    //     //     port: '',
-    //     //     pathname: path,
-    //     //   },
-    //     // ],
-    //     // loader: 'imgix',
-    //     // loaderFile: './imgix.ts',
-    //     // path: "https://exploredynamo.imgix.net/",
-    //     // unoptimized: true,
-
-
-    //   },
+    images: images  
      
-    //   webpack: (config, { isServer }) => {
-    //     if (!isServer) {
-    //         // don't resolve 'fs' module on the client to prevent this error on build --> Error: Can't resolve 'fs'
-    //         config.resolve.fallback = {
-    //             fs: false,
-    //             child_process: false,
-    //             http2: false,
-    //             net: false,
-    //             tls: false
-    //         }
-    //     }
-
-    //     return config;
-    // }  
 }
 
-console.log("images",images)
 
 module.exports = nextConfig
