@@ -23,12 +23,7 @@ export function Hero(){
     <div className="hero min-h-screen pb-10">
       <div className="hero-content flex-col gap-10 md:flex-row">
         <div className="md:flex-[0_0_30%]">
-          <Image src="mobile.gif" 
-                 width={450} 
-                 height={300} 
-                 alt="Hero Image"
-                 unoptimized={true}
-                 />
+          <Image src="/mobile.gif" width={450} height={300} alt="Hero Image"  />
         </div>
         <div>
             <h2 className="font-sora font-bold  text-4xl md:text-5xl  lg:text-7xl break-words mb-2 max-w-2xl">Rewarding your daily life</h2>

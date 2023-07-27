@@ -10,26 +10,12 @@ import {google} from "googleapis"
 
 export default async function createContact(req: NextApiRequest,res: NextApiResponse){
    
-    // if(req.method !== 'POST'){
-    //     return res.status(405).send({message: 'Only POST requests allowed'})
-    // }
-    if(req.method !== 'GET'){
-      return res.status(405).send({message: 'Only GET requests allowed'})
-  }
-
+    if(req.method !== 'POST'){
+        return res.status(405).send({message: 'Only POST requests allowed'})
+    }
 
     // const contact = req.body as Contact
-    const contact = req.query
-
-    const data  = contact.range === 'Contacts!A2:D' 
-                         ? [contact.name,contact.email,contact.phone,contact.message] 
-                         : contact.range === 'Individual!A2:D' 
-                         ? [contact.name,contact.email,contact.phone,contact.message] 
-                         : contact.range === 'Company!A2:D' 
-                         ? [contact?.name , contact?.phone]       
-                         : contact.range === 'Organisation!A2:D'
-                         ? [contact.name,contact.email,contact.phone,contact.service,contact.message] 
-                         : [contact.name,contact.email,contact.phone,contact.message]
+    const contact = req.body
 
     try {
 
@@ -50,10 +36,10 @@ export default async function createContact(req: NextApiRequest,res: NextApiResp
 
           const response = await sheets.spreadsheets.values.append({
             spreadsheetId: process.env.SPREADSHEET_ID,
-            range: contact?.range as string,
+            range: contact?.range,
             valueInputOption: 'USER_ENTERED',
             requestBody: {
-              values: [data],
+              values: [contact?.data],
             },
           });
 

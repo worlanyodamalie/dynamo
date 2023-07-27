@@ -1,24 +1,17 @@
 /** @type {import('next').NextConfig} */
-// const path = '/images/' + process.env.NEXT_PUBLIC_SANITY_PROJECT_ID + '/production/**' 
+const path = '/images/' + process.env.NEXT_PUBLIC_SANITY_PROJECT_ID + '/production/**' 
 
 const nextConfig = {
-    output: 'export',
-    // output: 'standalone',
-    //trailingSlash: true,
     images: {
-        // remotePatterns: [
-        //   {
-        //     protocol: 'https',
-        //     hostname: 'cdn.sanity.io',
-        //     port: '',
-        //     pathname: path,
-        //   },
-        // ],
-        loader: 'imgix',
-        path: "https://exploredynamo.imgix.net/"
-
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'cdn.sanity.io',
+            port: '',
+            pathname: path,
+          },
+        ],
       },
-     
     //   webpack: (config, { isServer }) => {
     //     if (!isServer) {
     //         // don't resolve 'fs' module on the client to prevent this error on build --> Error: Can't resolve 'fs'

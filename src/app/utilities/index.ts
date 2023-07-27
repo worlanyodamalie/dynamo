@@ -1,5 +1,4 @@
 import { createClient } from "next-sanity";
-import { ImageLoaderProps } from "next/image";
 
 
 export const client = createClient({
@@ -34,8 +33,3 @@ export function formatDate(date: { getFullYear: () => any; getMonth: () => numbe
   }
 
 } 
-
-export const customLoader = ({ src, width, quality }: ImageLoaderProps) => {
-  //console.log("customLoader" , src)
-  return `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/production/${src}?w=${width}&q=${quality || 75}`
-}

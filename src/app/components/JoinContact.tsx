@@ -80,25 +80,17 @@ export function JoinContact(){
 
         const sheetData = {
             range: 'Organisation!A2:D',
-            name: data?.name,
-            email: data?.email,
-            phone: data?.phone,
-            service: dynamoService,
-            message: data?.message
-
-            // data: contact
+            data: contact
         }
         
-        // const response = await fetch('/api/sheet' , {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(sheetData)
-        // })
-        const response = await fetch('/api/sheet'+ '?' + new URLSearchParams(sheetData) )
-
+        const response = await fetch('/api/sheet' , {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(sheetData)
+        })
 
         const content = await response.json()
         
