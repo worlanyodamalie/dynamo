@@ -1,12 +1,13 @@
-'use client';
 import Image from "next/image";
 import { client , customLoader } from "../../utilities/index";
 import { groq } from "next-sanity";
 import imageUrlBuilder  from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { PortableText } from "@portabletext/react";
-import Loading from "../loading";
+import { LoadingScreen } from '@/components';
+import Layout from '@/components/Layout';
 import { Suspense } from "react";
+import { useRouter } from 'next/router'
 
 
 function urlFor(source: string ){
@@ -15,6 +16,7 @@ function urlFor(source: string ){
 
   const regex = new RegExp(`^${prefix}`)
   const str =  source.replace(regex, '')
+
 
   return str
 
@@ -43,33 +45,35 @@ const ptComponents = {
     }
   }
 
-  const query = groq`*[_type == "post" && slug.current == $slug][0]{
+  const query = groq`*[_type == "post" && defined(slug.current)  == $slug][0]{
     title,
     "name": author->name,
     "categories": categories[]->title,
     "imageUrl": mainImage.asset->url,
     body,
-    publishedAt
+    publishedAt,
+    slug
 
 }`
 
-async function getPost(query: string,slug: string){
-   const post = await client.fetch(query,{slug})
-   return post
-}
+// async function getPost(query: string,slug: string){
+//    const post = await client.fetch(query,{slug})
+//    return post
+// }
 
-export default async function BlogPost({ params  }: { params: { slug: string } }){
+
+
+export default  function BlogPost({ post  }: any){
    
-    // console.log("params new" , params.slug)
+    // console.log("params new" , post)
 
-    const post = await getPost(query,params?.slug)
 
-    // console.log("post",post)
 
     
     
     return (
-      <Suspense fallback={<Loading />}>
+    <Layout>   
+      <Suspense fallback={<LoadingScreen />}>
         <div className="flex flex-col justify-center items-center p-6">
               <h2 className="font-sora font-normal text-lg mb-2">Blog</h2>
               <h1 className="font-sora font-semibold text-2xl md:text-4xl mb-1">{post?.title}</h1>
@@ -117,8 +121,39 @@ export default async function BlogPost({ params  }: { params: { slug: string } }
             </div>
 
         </div>
-        </Suspense>  
+        </Suspense> 
+        </Layout>      
     )
+}
+
+export async function getStaticPaths() {
+  const paths = await client.fetch( `*[_type == "post" && defined(slug.current)][].slug.current`)
+  
+  
+  return {
+    paths: paths.map((slug: any) => ({params: {slug}})),
+    fallback: true,
+  }
+}
+
+export async function getStaticProps(context: any) {
+
+  const { slug = "" } = context.params
+  const post = await client.fetch(`*[_type == "post" && slug.current == $slug][0]{
+    title,
+    "name": author->name,
+    "categories": categories[]->title,
+    "imageUrl": mainImage.asset->url,
+    body,
+    publishedAt,
+    slug
+
+}`, { slug })
+  return {
+    props: {
+      post
+    }
+  }
 }
 
 // export async function getStaticPaths(){

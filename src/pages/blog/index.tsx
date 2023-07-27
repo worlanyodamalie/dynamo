@@ -1,15 +1,14 @@
-'use client';
 import Link from "next/link";
 import { groq } from "next-sanity";
-import { client , customLoader } from "../utilities/index";
+import { client , customLoader } from "../../utilities";
 import imageUrlBuilder  from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
 import { Suspense } from "react";
-import Loading from "./loading";
-import { ImageLoaderProps } from "next/image";
+import { LoadingScreen } from '@/components';
+import Layout from '@/components/Layout';
 
 interface ImageProps extends Omit<React.HTMLProps<HTMLImageElement>, 'src'> {
     src: string | ImageUrlBuilder;
@@ -64,10 +63,12 @@ const ptComponents = {
 
 
 
-async function getPosts(){
-    const posts = await client.fetch(query)
-    return posts
-}
+// async function getPosts(){
+//     const posts = await client.fetch(query)
+//     return posts
+// }
+
+
 
 function truncateBody(body: any){
 
@@ -105,11 +106,12 @@ function truncateBody(body: any){
 // }
 
 
-export default async function Blog(){
-    const posts = await getPosts();
+export default function Blog( {posts} : any){
+    // const posts = await getPosts();
 
     return (
-      <Suspense fallback={<Loading />}>
+    <Layout>    
+      <Suspense fallback={<LoadingScreen />}>
              <div className="flex flex-col justify-center items-center p-6">
             <h2 className="font-sora font-normal text-lg mb-2">Blog</h2>
             <h1 className="font-sora font-semibold text-2xl md:text-4xl mb-1">Rewarding your daily life</h1>
@@ -171,39 +173,28 @@ export default async function Blog(){
                      </Link>
                     ))
                 }
-                {/* {
-                    [1,2,3,4,5,6].map((item) => {
-                        return (
-
-                            <Link key={item} href={`/blog/rewarding-your-daily-life`} className="flex-auto w-1/2 lg:w-3/12 md:w-4/12  ">
-                               <div className="max-w-xl">
-                                    <div className="relative h-52 md:h-60 mb-4">
-                                        <Image 
-                                        src="/subiyanto.png"
-                                        alt="blog image"
-                                        fill
-                                        />
-                                    </div>
-                                    <div className="flex flex-col">
-                                    <p className="font-sora font-light text-xs">Ghana Web | 12 May 2023</p>
-                                    <h1 className="font-sora font-semibold text-lg mb-3">Rewarding your daily life</h1>
-                                    <p className="font-sora font-light text-base mb-2">Lorem ipsum dolor sit amet,consectetur adipiscing elit. Suspendisse semper, nisl.</p>
-                                    </div>
-                               </div>
-                            </Link>
-
-                            
-                        )
-                        
-                    })
-                } */}
-                
                 
             </div>
 
         </div>
-      </Suspense>  
+      </Suspense> 
+    </Layout>   
         
     )
 } 
+
+// export async function getStaticPaths() {
+//   const paths = await client.fetch(query)
+
+//   return {
+//     paths: paths.map((slug: any) => ({params: {slug}})),
+//     fallback: true,
+//   }
+// }
+
+export async function getStaticProps () {
+  const posts = await client.fetch(query);
+
+  return { props: { posts } };
+};
 
