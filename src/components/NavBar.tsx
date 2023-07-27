@@ -81,7 +81,7 @@ export function NavBar ()  {
             <div className="md:flex-1 w-full mx-auto md:justify-start flex flex-row justify-center md:pb-0 pb-3">
                  <Link href="/" className="md:w-full">
                      <Image 
-                       src="/Logo.svg"
+                       src="Logo.svg"
                        alt="Dynamo Logo"
                        width={120}
                        height={20}

@@ -8,15 +8,15 @@ const benefits = [
         title: 'Direct reward',
         description: 'Most transactions come with a reward or a cash back',
         // bgImage: '/direct-reward.png'
-        bgImage: '/D.png',
+        bgImage: 'D.png',
         bgSize: "75%"
     },
     {
-        img: '/youthful-modern.svg',
+        img: 'youthful-modern.svg',
         title: 'Youthful and modern',
         description: 'Digitized transactions and engagements',
         // bgImage: '/youthful-modern.png'
-        bgImage: '/Y.png',
+        bgImage: 'Y.png',
         bgSize: ""
     },
     {
@@ -24,15 +24,15 @@ const benefits = [
         title: 'Nexus',
         description: 'Bringing all your digital transactions in one place',
         // bgImage: '/nexus.png'
-        bgImage: '/N.png',
+        bgImage: 'N.png',
         bgSize: ""
     },
     {
-        img: '/artificial-intelligence.svg',
+        img: 'artificial-intelligence.svg',
         title: 'Artificial Intelligence',
         description: 'Artificial Intelligence(AI) based training and monitoring to enhance user experience',
         // bgImage: '/artificial-intelligence.png'
-        bgImage: '/A.png',
+        bgImage: 'A.png',
         bgSize: ""
     },
     {
@@ -40,15 +40,15 @@ const benefits = [
         title: 'Marketing opportunities',
         description: 'Promoting services to others for a commision',
         // bgImage: '/marketing-opportunies.png'
-        bgImage: '/M.png',
+        bgImage: 'M.png',
         bgSize: ""
     },
     {
-        img: '/one-stop-service.svg',
+        img: 'one-stop-service.svg',
         title: 'One-stop service',
         description: 'One-stop service aggregation providing convenience',
         // bgImage: '/one-stop-service.png'
-        bgImage: '/O.png',
+        bgImage: 'O.png',
         bgSize: ""
     },
     

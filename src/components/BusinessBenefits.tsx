@@ -10,42 +10,42 @@ const benefits = [
         img: 'data-analytics.svg',
         title: 'Data Analytics',
         description: 'Use insights through platform analytics and direct user feedback',
-        bgImage: '/D.png',
+        bgImage: 'D.png',
         bgSize: "75%"
     },
     {
         img: 'yield-oriented.svg',
         title: 'Yield-Oriented Incentives',
         description: 'Expand your existing sales force generating a tangible financial return on top of increased market',
-        bgImage: '/Y.png',
+        bgImage: 'Y.png',
         bgSize: ""
     },
     {
         img: 'customer-acquisition.svg',
         title: 'New Customer Acquisitions',
         description: 'Expand service reach and client segments',
-        bgImage: '/N.png',
+        bgImage: 'N.png',
         bgSize: ""
     },
     {
         img: 'accesible.svg',
         title: 'Accessible & Simple',
         description: 'No upfront fee required to connect to Dynamo with increased distribution and marketing channels',
-        bgImage: '/A.png',
+        bgImage: 'A.png',
         bgSize: ""
     },
     {
         img: 'modular.svg',
         title: 'Modular',
         description: 'Service set up allows flexibility for business to determine who (profile and experience) can promote services',
-        bgImage: '/M.png',
+        bgImage: 'M.png',
         bgSize: ""
     },
     {
         img: 'operational-enhancement.svg',
         title: 'Operational Enhancement',
         description: 'Every user of Dynamo has the potential to access and/or promote a service if the user meets established requirements',
-        bgImage: '/O.png',
+        bgImage: 'O.png',
         bgSize: ""
     },
    
@@ -73,7 +73,7 @@ export function BusinessBenefits(){
                     Partner with us 
                       <div >
                         <Image 
-                            src="/arrow-btn.svg"
+                            src="arrow-btn.svg"
                             alt="partner us"
                             width={20}
                             height={20}
