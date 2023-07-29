@@ -33,10 +33,10 @@ if (isGithubActions) {
 
 
 const nextConfig = {
+   output: "export",
    assetPrefix: assetPrefix,
    basePath: basePath,
-    images: images
-     
+   images: images 
 }
 
 module.exports = nextConfig

@@ -23,6 +23,9 @@ export function CompanyContact({range = 'Company!A2:D'}){
     
     const [loadingState,setLoadingState] = React.useState(false)
 
+    const API = process.env.NEXT_PUBLIC_API!
+
+
     useEffect(() => {
         if(formState.isSubmitSuccessful)
          {
@@ -50,20 +53,20 @@ export function CompanyContact({range = 'Company!A2:D'}){
 
         const sheetData = {
             range: range,
-            name: data?.name,
-            phone: data?.phone
-            // data: contact
+            // name: data?.name,
+            // phone: data?.phone
+            data: contact
         }
         
-        // const response = await fetch('/api/sheet' , {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(sheetData)
-        // })
-        const response = await fetch('/api/sheet'+ '?' + new URLSearchParams(sheetData) )
+        const response = await fetch(API , {
+            method: 'POST',
+            headers: {
+                // 'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(sheetData)
+        })
+        // const response = await fetch('/api/sheet'+ '?' + new URLSearchParams(sheetData) )
 
 
         
@@ -76,7 +79,7 @@ export function CompanyContact({range = 'Company!A2:D'}){
             notify()
             setLoadingState(false)
         } else {
-            setLoadingState(true)
+          setLoadingState(false)
         }
 
         

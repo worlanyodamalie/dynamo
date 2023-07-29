@@ -27,7 +27,7 @@ export function Contact({range = 'Contacts!A2:D'}){
     
     const [loadingState,setLoadingState] = React.useState(false)
 
-
+    const API = process.env.NEXT_PUBLIC_API!
 
     useEffect(() => {
         if(formState.isSubmitSuccessful)
@@ -47,46 +47,39 @@ export function Contact({range = 'Contacts!A2:D'}){
       const notify = () => toast(toastMsg)
 
       const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        // console.log("data",data)
 
 
-        setLoadingState(true)
+       setLoadingState(true)
 
-       
+
 
         const contact = [data?.name , data?.email , data?.phone ,  data?.message ]
 
         const sheetData = {
             range: range,
-            name: data?.name,
-            email: data?.email,
-            phone: data?.phone,
-            message: data?.message
-            // data: contact
+            data: contact
         }
-        
-        // const response = await fetch('/api/sheet' , {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(sheetData)
-        // })
-        const response = await fetch('/api/sheet'+ '?' + new URLSearchParams(sheetData) )
 
-
+        // console.log(`API: ${API}`)
         
+        const response =  await fetch(API, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            // 'Access-Control-Allow-Origin': '*',
+            // "Access-Control-Allow-Methods": "POST"
+          },
+          body: JSON.stringify(sheetData)
+        })
+       // const response = await fetch('/api/sheet'+ '?' + new URLSearchParams(sheetData) )
 
         const content = await response.json()
-
-        // console.log("content",content)
         
         if(content?.status === 200){
             notify()
             setLoadingState(false)
         } else {
-            setLoadingState(true)
+            setLoadingState(false)
         }
 
         

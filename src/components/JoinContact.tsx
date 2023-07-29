@@ -34,6 +34,9 @@ export function JoinContact(){
     const [formStep,setFormStep] = React.useState(1)
     const [isNextStep,setNextStep] = React.useState(false)
 
+    const API = process.env.NEXT_PUBLIC_API!
+
+
     useEffect(() => {
         if(formState.isSubmitSuccessful)
          {
@@ -80,24 +83,24 @@ export function JoinContact(){
 
         const sheetData = {
             range: 'Organisation!A2:D',
-            name: data?.name,
-            email: data?.email,
-            phone: data?.phone,
-            service: dynamoService,
-            message: data?.message
+            // name: data?.name,
+            // email: data?.email,
+            // phone: data?.phone,
+            // service: dynamoService,
+            // message: data?.message
 
-            // data: contact
+            data: contact
         }
         
-        // const response = await fetch('/api/sheet' , {
-        //     method: 'POST',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(sheetData)
-        // })
-        const response = await fetch('/api/sheet'+ '?' + new URLSearchParams(sheetData) )
+        const response = await fetch(API , {
+            method: 'POST',
+            headers: {
+                // 'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(sheetData)
+        })
+        // const response = await fetch('/api/sheet'+ '?' + new URLSearchParams(sheetData) )
 
 
         const content = await response.json()
@@ -106,7 +109,7 @@ export function JoinContact(){
             notify()
             setLoadingState(false)
         } else {
-            setLoadingState(true)
+            setLoadingState(false)
         }
  
     }
