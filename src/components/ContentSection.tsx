@@ -31,7 +31,6 @@ const joinUs = [
     'Most transactions provide a financial reward whether recommending a service or consuming a service',
     'Introduces new services with explanations on the value of the service',
     'Provides a means of generating income for entrepreneurial platform users',
-    'Provides a means of generating income for entrepreneurial platform users'
 ]
 
 const benefits = [

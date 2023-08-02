@@ -47,44 +47,44 @@ export function Contact({range = 'Contacts!A2:D'}){
       const notify = () => toast(toastMsg)
 
       const onSubmit: SubmitHandler<Inputs> = async (data) => {
+        try {
+          setLoadingState(true);
 
+          const contact = [data?.name, data?.email, data?.phone, data?.message];
 
-       setLoadingState(true)
-
-
-
-        const contact = [data?.name , data?.email , data?.phone ,  data?.message ]
-
-        const sheetData = {
+          const sheetData = {
             range: range,
-            data: contact
+            data: contact,
+            type: "dynamo",
+          };
+
+          // console.log(`API: ${API}`)
+
+          const response = await fetch(API, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              // 'Access-Control-Allow-Origin': '*',
+              // "Access-Control-Allow-Methods": "POST"
+            },
+            body: JSON.stringify(sheetData),
+          });
+
+          const content = await response.json();
+
+          if (content?.status === 200) {
+            notify();
+            setLoadingState(false);
+          } else {
+            setLoadingState(false);
+          }
+        } catch (error) {
+          console.log("error", error);
+          setLoadingState(false);
         }
 
-        // console.log(`API: ${API}`)
-        
-        const response =  await fetch(API, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            // 'Access-Control-Allow-Origin': '*',
-            // "Access-Control-Allow-Methods": "POST"
-          },
-          body: JSON.stringify(sheetData)
-        })
-       // const response = await fetch('/api/sheet'+ '?' + new URLSearchParams(sheetData) )
-
-        const content = await response.json()
-        
-        if(content?.status === 200){
-            notify()
-            setLoadingState(false)
-        } else {
-            setLoadingState(false)
-        }
-
-        
-        
-    }
+        // const response = await fetch('/api/sheet'+ '?' + new URLSearchParams(sheetData) )
+      };
     return (
       <div className="container mx-auto ">
       

@@ -47,42 +47,42 @@ export function CompanyContact({range = 'Company!A2:D'}){
       const notify = () => toast(toastMsg)
 
       const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        setLoadingState(true)
+        
+        try {
+          setLoadingState(true);
 
-        const contact = [data?.name ,  data?.phone  ]
+          const contact = [data?.name, data?.phone];
 
-        const sheetData = {
+          const sheetData = {
             range: range,
-            // name: data?.name,
-            // phone: data?.phone
-            data: contact
-        }
-        
-        const response = await fetch(API , {
-            method: 'POST',
+            data: contact,
+            type: "dynamo",
+          };
+
+          const response = await fetch(API, {
+            method: "POST",
             headers: {
-                // 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+              // 'Accept': 'application/json',
+              "Content-Type": "application/json",
             },
-            body: JSON.stringify(sheetData)
-        })
-        // const response = await fetch('/api/sheet'+ '?' + new URLSearchParams(sheetData) )
+            body: JSON.stringify(sheetData),
+          });
+          // const response = await fetch('/api/sheet'+ '?' + new URLSearchParams(sheetData) )
 
+          const content = await response.json();
 
-        
+          // console.log("content",content)
 
-        const content = await response.json()
-
-        // console.log("content",content)
-        
-        if(content?.status === 200){
-            notify()
-            setLoadingState(false)
-        } else {
-          setLoadingState(false)
+          if (content?.status === 200) {
+            notify();
+            setLoadingState(false);
+          } else {
+            setLoadingState(false);
+          }
+        } catch (error) {
+          setLoadingState(false);
         }
 
-        
         
     }
     return (

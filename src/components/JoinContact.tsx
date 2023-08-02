@@ -71,47 +71,59 @@ export function JoinContact(){
 
 
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        setLoadingState(true)
-        
-       const services =  data?.services.map((service: any) => {
-            return service.value
-       })
-   
-       const dynamoService = services.toString()
+       
+      try {
+        setLoadingState(true);
 
-        const contact = [data?.name , data?.email , data?.phone , dynamoService ,  data?.message ]
+        const services = data?.services.map((service: any) => {
+          return service.value;
+        });
+
+        const dynamoService = services.toString();
+
+        const contact = [
+          data?.name,
+          data?.email,
+          data?.phone,
+          dynamoService,
+          data?.message,
+        ];
 
         const sheetData = {
-            range: 'Organisation!A2:D',
-            // name: data?.name,
-            // email: data?.email,
-            // phone: data?.phone,
-            // service: dynamoService,
-            // message: data?.message
+          range: "Organisation!A2:D",
+          // name: data?.name,
+          // email: data?.email,
+          // phone: data?.phone,
+          // service: dynamoService,
+          // message: data?.message
 
-            data: contact
-        }
-        
-        const response = await fetch(API , {
-            method: 'POST',
-            headers: {
-                // 'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(sheetData)
-        })
+          data: contact,
+          type: "dynamo",
+        };
+
+        const response = await fetch(API, {
+          method: "POST",
+          headers: {
+            // 'Accept': 'application/json',
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(sheetData),
+        });
         // const response = await fetch('/api/sheet'+ '?' + new URLSearchParams(sheetData) )
 
+        const content = await response.json();
 
-        const content = await response.json()
-        
-        if(content?.status === 200){
-            notify()
-            setLoadingState(false)
+        if (content?.status === 200) {
+          notify();
+          setLoadingState(false);
         } else {
-            setLoadingState(false)
+          setLoadingState(false);
         }
- 
+      } catch (error) {
+        setLoadingState(false);
+      }
+      
+      
     }
 
 
