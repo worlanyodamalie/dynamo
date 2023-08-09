@@ -15,11 +15,13 @@ interface ImageProps extends Omit<React.HTMLProps<HTMLImageElement>, 'src'> {
   }
 
 function urlFor(source: string ){
-  const prefix = `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/production`
+  const prefix = `https://exploredynamo.imgix.net/`
   
 
   const regex = new RegExp(`^${prefix}`)
   const str =  source.replace(regex, '')
+
+  
 
   return str
 
@@ -39,7 +41,7 @@ const ptComponents = {
             loading="lazy"
             width={320}
             height={240}
-            src={urlFor(value)}
+            src={value}
             loader={customLoader}
             //src={urlFor(value).width(320).height(240).fit('max').auto('format').url()}
             
@@ -123,7 +125,7 @@ export default function Blog( {posts} : any){
                       <>  
                         <div className="absolute inset-0 w-full">
                             <Image 
-                              src={urlFor(posts[0].imageUrl)}
+                              src={posts[0].imageUrl}
                               alt="Blog banner"
                               fill
                               className="object-cover"
@@ -151,7 +153,7 @@ export default function Blog( {posts} : any){
                          <div className="">
                              <div className="relative h-52 md:h-60 mb-4">
                                  <Image 
-                                   src={urlFor(imageUrl)}
+                                   src={imageUrl}
                                    alt="blog image"
                                    fill
                                    className="object-cover"

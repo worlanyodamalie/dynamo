@@ -37,5 +37,15 @@ export function formatDate(date: { getFullYear: () => any; getMonth: () => numbe
 
 export const customLoader = ({ src, width, quality }: ImageLoaderProps) => {
   //console.log("customLoader" , src)
-  return `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/production/${src}?w=${width}&q=${quality || 75}`
+  const prefix = `https://exploredynamo.imgix.net/`
+  
+
+  const regex = new RegExp(`^${prefix}`)
+  const str =  src.replace(regex, '')
+
+  // console.log("string" , str )
+
+  return str + `?w=${width}&q=${quality || 75}`
+
+  // return `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/production/${src}?w=${width}&q=${quality || 75}`
 }

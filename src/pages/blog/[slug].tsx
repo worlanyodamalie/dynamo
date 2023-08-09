@@ -35,7 +35,7 @@ const ptComponents = {
             loading="lazy"
             width={320}
             height={240}
-            src={urlFor(value)}
+            src={value}
             loader={customLoader}
             //src={urlFor(value).width(320).height(240).fit('max').auto('format').url()}
             
@@ -83,7 +83,7 @@ export default  function BlogPost({ post  }: any){
                     {
                         post?.imageUrl && (
                             <Image 
-                               src={urlFor(post?.imageUrl)}
+                               src={post?.imageUrl}
                                alt="Blog banner"
                                fill
                                className="object-cover"
