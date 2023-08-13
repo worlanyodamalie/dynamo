@@ -16,7 +16,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function SwipeSlider({title,data,settings}:SwipeDataType ){
   const scrollRef = useRef<HTMLDivElement>(null)
-  const scrollYRef = useRef<HTMLDivElement>(null)
 
   const [scrollRange,setScrollRange] = useState<number>(0)
   
@@ -60,7 +59,7 @@ export function SwipeSlider({title,data,settings}:SwipeDataType ){
 
  
     return (
-        <div className="pb-10 carousel-wrapper " 
+        <div className="pb-5 carousel-wrapper " 
             //  style={{
             //   height: "100%",
             //   overscrollBehavior: "none",

@@ -101,7 +101,7 @@ export function ContentSection(){
                   }
                   
                </div>
-               <div className="flex justify-center items-center flex-wrap gap-10 py-12">
+                {/* <div className="flex justify-center items-center flex-wrap gap-10 py-12">
                     <div className="flex-auto md:w-1/6">
                       <Image 
                         src="join-us.svg"
@@ -111,7 +111,7 @@ export function ContentSection(){
                         className="mx-auto"/>
                     </div>
                     <div className="flex-auto w-2/6">
-                        {/* <h2 className="font-sora font-bold text-3xl mb-8 md:text-left text-center">Join Us</h2> */}
+                        <h2 className="font-sora font-bold text-3xl mb-8 md:text-left text-center">Join Us</h2>
                         <ul className="list-decimal">
                             {
                                 joinUs.map((item,index) => {
@@ -122,8 +122,8 @@ export function ContentSection(){
                             }
                             
                         </ul>
-                    </div>
-               </div>
+                    </div> 
+               </div>  */}
                  
                {/* <div className="pb-10">
                <SwipeSlider
